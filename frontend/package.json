@@ -8,9 +8,9 @@
     "=========================== WEB DEVELOPMENT ===========================": "",
     "web-serve": "nx serve model3d-web",
     "========================= MOBILE DEVELOPMENT ==========================": "",
-    "metro-start": "nx start model3d-mobile",
-    "run-android": "nx run-android model3d-mobile",
-    "run-ios": "nx run-ios model3d-mobile"
+    "mobile-serve": "nx start model3d-mobile",
+    "build-android": "nx run-android model3d-mobile",
+    "build-ios": "nx run-ios model3d-mobile"
   },
   "private": true,
   "dependencies": {
