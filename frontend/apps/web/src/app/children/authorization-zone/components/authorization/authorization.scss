@@ -1,0 +1,12 @@
+@import "../../../../../libs/styles";
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.submit-button {
+  margin-bottom: $s-sp;
+}
+

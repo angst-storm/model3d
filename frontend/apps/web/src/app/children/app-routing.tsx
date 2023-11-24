@@ -1,10 +1,10 @@
 import {Navigate, Route, Routes} from "react-router-dom";
-import {Authorization} from "./unauthorized/components/authorization/authorization";
-import {Registration} from "./unauthorized/components/registration/registration";
-import {EmailConfirm} from "./unauthorized/components/email-confirm/email-confirm";
-import {PasswordRecovery} from "./unauthorized/components/password-recovery/password-recovery";
-import {NotFound} from "./unauthorized/components/not-found/not-found";
-import {UnauthorizedLayout} from "./unauthorized/components/unauthorized-layout/unauthorized-layout";
+import {Authorization} from "./authorization-zone/components/authorization/authorization";
+import {Registration} from "./authorization-zone/components/registration/registration";
+import {EmailConfirm} from "./authorization-zone/components/email-confirm/email-confirm";
+import {PasswordRecovery} from "./authorization-zone/components/password-recovery/password-recovery";
+import {NotFound} from "./authorization-zone/components/not-found/not-found";
+import {AuthorizationZoneLayout} from "./authorization-zone/components/authorization-zone-layout/authorization-zone-layout";
 
 export function AppRouting() {
   return <Routes>
@@ -17,7 +17,7 @@ export function AppRouting() {
       element={<Navigate to="unauthorized/authorization" relative='route' replace />}
     />
     <Route path="not-found" element={<NotFound/>}/>
-    <Route path="unauthorized" element={<UnauthorizedLayout/>}>
+    <Route path="unauthorized" element={<AuthorizationZoneLayout/>}>
       <Route path="authorization" element={<Authorization/>}/>
       <Route path="registration" element={<Registration/>}/>
       <Route path="email-confirm" element={<EmailConfirm/>}/>

@@ -4,30 +4,32 @@ import ripple from "ripple-effects";
 
 export interface IM3DButtonProps extends PropsWithChildren {
     onClick?(): void
-    type?: "button" | "submit" | "reset" | undefined,
-    size?: 'x' | 'm' | 'l',
+    nativeType?: "button" | "submit" | "reset" | undefined,
+    type?: 'text' | 'filled',
     disabled?: boolean
 }
 
 export function M3dButton(props: IM3DButtonProps) {
     useEffect(() => {
         ripple('.button', {
-            opacity: 0.1
+            background: 'white',
+            opacity: 0.01
         })
     }, [])
 
     props = setDefaultProps(props)
 
-    return <button type={props.type} onClick={props.onClick} className={'button button-size-' + props.size +
-    (props.disabled ? ' disabled' : '')}>
+    return <button type={props.nativeType} onClick={props.onClick} className={'button'} data-custom-type={props.type}
+                   disabled={props.disabled}>
         {props.children}
     </button>
 }
 
 function setDefaultProps(props: IM3DButtonProps) {
     const propsWithDefaults: IM3DButtonProps = {...props};
-    propsWithDefaults.size = props.size ?? 'm';
-    propsWithDefaults.disabled = props.disabled ?? false
+    propsWithDefaults.disabled = props.disabled ?? false;
+    propsWithDefaults.type = props.type ?? 'filled'
+    propsWithDefaults.nativeType = props.nativeType ?? 'button'
 
     return propsWithDefaults;
 }

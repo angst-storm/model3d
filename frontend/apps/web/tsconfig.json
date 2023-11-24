@@ -22,7 +22,8 @@
       "baseUrl": ".",
       "paths": {
           "@model3d/controls": ["./src/libs/m3d-ui-controls/lib/index.ts"],
-          "@model3d/styles": ["./src/libs/styles/index.scss"]
+          "@model3d/styles": ["./src/libs/styles/index.scss"],
+          "@assets": ["./src/assets"]
       }
   },
   "include": [

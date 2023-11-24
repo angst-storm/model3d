@@ -1,0 +1,18 @@
+@import '../../../../styles';
+
+.form-container {
+  padding: $xl-sp $xxl-sp;
+  background-color: $white;
+  border-radius: 20px;
+  box-shadow: 0 1px 3px 1px rgba(0, 30, 49, 0.20);
+  max-width: min-content;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-header {
+  margin-bottom: $l-sp;
+}
+
