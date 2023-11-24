@@ -3,9 +3,9 @@ import {AppRouting} from "./children/app-routing";
 
 export function App() {
 
-  return (<>
-          <AppRouting></AppRouting>
-  </>);
+  return <>
+      <AppRouting></AppRouting>
+  </>;
 }
 
 export default App;

@@ -1,9 +1,10 @@
 import React, {StrictMode} from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter} from "react-router-dom";
 import App from "./app/app";
 import './index.scss'
+import {Provider} from "react-redux";
+import {store} from "./storage/store";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,9 +12,9 @@ const root = ReactDOM.createRoot(
 
 root.render(
     <StrictMode>
-        <BrowserRouter>
+        <Provider store={store}>
             <App />
-        </BrowserRouter>
+        </Provider>
     </StrictMode>
 );
 

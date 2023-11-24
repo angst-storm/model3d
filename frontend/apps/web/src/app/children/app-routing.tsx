@@ -1,4 +1,4 @@
-import {Navigate, Route, Routes} from "react-router-dom";
+import {createBrowserRouter, Navigate, Route, RouterProvider, Routes} from "react-router-dom";
 import {Authorization} from "./authorization-zone/components/authorization/authorization";
 import {Registration} from "./authorization-zone/components/registration/registration";
 import {EmailConfirm} from "./authorization-zone/components/email-confirm/email-confirm";
@@ -6,22 +6,43 @@ import {PasswordRecovery} from "./authorization-zone/components/password-recover
 import {NotFound} from "./authorization-zone/components/not-found/not-found";
 import {AuthorizationZoneLayout} from "./authorization-zone/components/authorization-zone-layout/authorization-zone-layout";
 
+const router = createBrowserRouter([
+  {
+    path: "*",
+    element: <Navigate to="not-found" relative='route' replace />,
+  },
+  {
+    path: "/",
+    element: <Navigate to="authorization" relative='route' replace />,
+  },
+  {
+    path: "not-found",
+    Component: NotFound,
+  },
+  {
+    Component: AuthorizationZoneLayout,
+    children: [
+      {
+        path: "authorization",
+        Component: Authorization,
+      },
+      {
+        path: "registration",
+        Component: Registration,
+      },
+      {
+        path: "email-confirm",
+        Component: EmailConfirm,
+      },
+      {
+        path: "password-recovery",
+        Component: PasswordRecovery,
+      },
+    ],
+  },
+]);
+
+
 export function AppRouting() {
-  return <Routes>
-    <Route
-      path="*"
-      element={<Navigate to="not-found" relative='route' replace />}
-    />
-    <Route
-      path=""
-      element={<Navigate to="unauthorized/authorization" relative='route' replace />}
-    />
-    <Route path="not-found" element={<NotFound/>}/>
-    <Route path="unauthorized" element={<AuthorizationZoneLayout/>}>
-      <Route path="authorization" element={<Authorization/>}/>
-      <Route path="registration" element={<Registration/>}/>
-      <Route path="email-confirm" element={<EmailConfirm/>}/>
-      <Route path="password-recovery" element={<PasswordRecovery/>}/>
-    </Route>
-  </Routes>
+  return <RouterProvider router={router}/>
 }
