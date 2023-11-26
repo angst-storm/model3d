@@ -1,6 +1,6 @@
 import {IFormControlCreateOptions} from "../../interfaces/form-control-options.interface";
 import {useController} from "react-hook-form";
-import {ChangeEvent} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 import './m3d-input.scss';
 import {M3dButton} from "../m3d-button/m3d-button";
 import {useHookFormMask} from "use-mask-input";
@@ -19,7 +19,7 @@ export interface IM3DInputControlProps extends IFormControlCreateOptions<string>
     iconName: string,
     action: () => void
   },
-  maskValue?: boolean
+  inputType?: string
 }
 
 export function M3dInput(props: IM3DInputControlProps) {
@@ -35,7 +35,11 @@ export function M3dInput(props: IM3DInputControlProps) {
     props.onValueChanges?.(event.target.value);
   }
 
-  const registerWithMask = useHookFormMask(props.control.register);
+  const [iT,chIT] = useState(props.inputType)
+
+  useEffect(() => {
+    chIT(props.inputType || 'text')
+  }, [props])
 
   return <div className={'input-outer'}>
     <div className={'input-container'} data-is-valid={!fieldState.invalid}>
@@ -48,7 +52,7 @@ export function M3dInput(props: IM3DInputControlProps) {
           props.leadingIcon && <img className={'leading-icon'} src={require('@assets/icons/svg/' + props.leadingIcon.iconName + '.svg')}
                                     onClick={props.leadingIcon.action} alt={'leading icon'}/>
       }
-      <input {...props.control.register(props.name, { onChange: handleChange })} className={'input-value-accessor'}/>
+      <input {...props.control.register(props.name, { onChange: handleChange })} type={iT} className={'input-value-accessor'}/>
       {
           props.trailingIcon && <img className={'trailing-icon'} src={require('@assets/icons/svg/' + props.trailingIcon.iconName + '.svg')}
                                      onClick={props.trailingIcon.action} alt={'trailing icon'}/>

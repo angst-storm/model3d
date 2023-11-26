@@ -1,0 +1,51 @@
+@import "src/libs/styles";
+
+
+.checkbox {
+  &__mark-container {
+    margin: $xs-sp;
+    padding: 11px;
+    border-radius: 50%;
+
+    max-width: min-content;
+    max-height: min-content;
+    cursor: pointer;
+  }
+
+  &__mark-logo {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  &__mark {
+    border-radius: 2px;
+    min-width: 18px;
+    min-height: 18px;
+    max-width: 18px;
+    max-height: 18px;
+    position: relative;
+    z-index: 1;
+
+    &[data-value = false] {
+      border: 2px solid $text-secondary;
+      box-sizing: border-box;
+    }
+
+    &[data-value = true] {
+      background-color: $primary;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__label {
+    align-self: center;
+    @include M3-r-l();
+  }
+}

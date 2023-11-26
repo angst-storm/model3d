@@ -4,7 +4,6 @@ export interface IFormControlCreateOptions<T> {
     label?: string,
     readonly?: boolean,
     autofocus?: boolean,
-    // validationFn?(): boolean
     onValueChanges?(value: T): void,
     control: Control<any>,
     name: string
