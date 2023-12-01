@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'api.apps.ApiConfig',
-    'drf_yasg'
+    'drf_yasg',
+    'solo'
 ]
 
 MIDDLEWARE = [
@@ -114,13 +115,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-SWAGGER_SETTINGS = {
-    'SECURITY_DEFINITIONS': {},
-    'LOGIN_URL': 'swagger',
-    'LOGOUT_URL': 'auth-logout',
-    "DEFAULT_MODEL_RENDERING": "example"
-}
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -149,3 +143,6 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
 SESSION_COOKIE_HTTPONLY = True
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
