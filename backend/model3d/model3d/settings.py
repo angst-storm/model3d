@@ -46,7 +46,9 @@ INSTALLED_APPS = [
     'corsheaders',
     'api.apps.ApiConfig',
     'drf_yasg',
-    'solo'
+    'solo',
+    'colorfield',
+    'treebeard'
 ]
 
 MIDDLEWARE = [
