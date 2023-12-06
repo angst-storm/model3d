@@ -146,6 +146,21 @@ class CategorySerializer(serializers.ModelSerializer):
         ]
 
 
+class TreeCategorySerializer(serializers.ModelSerializer):
+    children = serializers.SerializerMethodField()
+
+    def get_children(self, obj):
+        return [TreeCategorySerializer(c).data for c in obj.get_children()]
+
+    class Meta:
+        model = Category
+        fields = [
+            'id',
+            'name',
+            'children'
+        ]
+
+
 class ProductSerializer(serializers.ModelSerializer):
     formats = FormatSerializer(many=True, read_only=True)
     render = RenderSerializer(read_only=True)
