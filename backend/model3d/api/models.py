@@ -162,6 +162,7 @@ class Product(models.Model):
     owners = models.ManyToManyField(User, related_name='owners', blank=True, verbose_name='Покупатели')
     archive = models.FileField(verbose_name='Архив с моделью')
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, verbose_name='Категория')
+    preview = models.ImageField(verbose_name='Изображение-превью')
 
     @property
     def isFree(self):

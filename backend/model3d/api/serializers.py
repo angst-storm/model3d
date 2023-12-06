@@ -186,5 +186,6 @@ class ProductSerializer(serializers.ModelSerializer):
             'archive',
             'category',
             'isFree',
-            'modelFileSizeBytes'
+            'modelFileSizeBytes',
+            'preview'
         ]
