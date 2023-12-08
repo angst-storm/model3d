@@ -47,6 +47,7 @@ export function Registration() {
     })
         .then((result) => {
           if (result.hasOwnProperty('error')) {
+
           }
         });
   }

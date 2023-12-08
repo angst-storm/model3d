@@ -1,0 +1,24 @@
+:root {
+    --grid-column-count: 12;
+    --grid-column-width: 72px;
+    --grid-gutter: 24px;
+    --grid-side-spacing: auto;
+
+    .grid-container {
+        display: grid;
+        grid-gap: var(--grid-gutter);
+        grid-template-columns: repeat(var(--grid-column-count), var(--grid-column-width));
+        grid-template-rows: 1fr;
+        justify-content: center;
+        align-content: center;
+        height: max-content;
+
+        .grid-element {
+            --grid-column-from: 1;
+            --grid-column-to: 12;
+            grid-column-start: var(--grid-column-from);
+            grid-column-end: calc(var(--grid-column-to) + 1);
+        }
+    }
+}
+

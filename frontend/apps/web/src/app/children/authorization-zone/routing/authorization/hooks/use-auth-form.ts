@@ -44,12 +44,12 @@ export function useAuthForm() {
         label: 'Пароль',
         control: formOutput.control,
         name: 'password',
-        supportingButton: {
-            text: 'Не помню пароль',
-            action: () => {
-                navigate('/password-recovery', {relative: 'route'})
-            }
-        }
+        // supportingButton: {
+        //     text: 'Не помню пароль',
+        //     action: () => {
+        //         navigate('/password-recovery', {relative: 'route'})
+        //     }
+        // }
     }
 
     return {

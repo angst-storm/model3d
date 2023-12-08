@@ -1,0 +1,60 @@
+.card-layout {
+    max-width: 100%;
+    max-height: min-content;
+
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 8px 8px 16px 8px;
+}
+
+.product-image {
+    width: 100%;
+    min-width: 152px;
+    height: 152px;
+    object-fit: scale-down;
+    cursor: pointer;
+}
+
+.product-name {
+    margin: var(--m-sp) auto 0 auto;
+    width: 100%;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-details {
+    margin: var(--m-sp) auto 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.pro-label {
+    color: var(--white);
+    background-color: var(--on-primary-continer);
+    max-width: min-content;
+    border-radius: 100px;
+    padding: var(--xss-sp) var(--s-sp);
+    margin-right: auto;
+}
+
+.favorite-image {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/*.rounded-button {*/
+/*    border-radius: 50%;*/
+/*    width: 16px;*/
+/*    height: 16px;*/
+/*}*/
+
+.favorite-count {
+    color: var(--text-secondary);
+    margin-left: var(--xs-sp);
+    text-align: center;
+}
