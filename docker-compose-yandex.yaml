@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    expose:
+      - 5432
+    environment:
+      POSTGRES_PASSWORD: password
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+  django:
+    container_name: django
+    image: angstorm/model3d:v1
+    environment:
+      SECRET_KEY: django-insecure-51gjtec6!v&g)^u*d^o$7e)w46p@4gb0j7o^*eokc+-p5az-9e
+      DEBUG: "True"
+      ALLOWED_HOSTS: 127.0.0.1;localhost;model3d.sergei-kiprin.ru
+      DJANGO_URL: http://model3d.sergei-kiprin.ru
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB_NAME: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_SSLMODE: disable
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    volumes:
+      - media:/media
+volumes:
+  postgres-data:
+  media:

@@ -18,11 +18,18 @@ class SocialMediaSerializer(serializers.ModelSerializer):
 class SiteSettingsSerializer(serializers.ModelSerializer):
     footerUrls = FooterURLSerializer(many=True, read_only=True, source='footerurl_set')
     socialMedias = SocialMediaSerializer(many=True, read_only=True, source='socialmedia_set')
+    address = serializers.SerializerMethodField()
+
+    def get_address(self, obj):
+        return {'text': obj.address, 'url': obj.addressUrl}
 
     class Meta:
         model = SiteSettings
         fields = [
-            'contactsText',
+            'email',
+            'phone',
+            'address',
+            'termsOfUseUrl',
             'receiveDistributionUrl',
             'privacyPolicyUrl',
             'userAgreementUrl',
@@ -36,17 +43,25 @@ class SiteSettingsSerializer(serializers.ModelSerializer):
 
 class RegDataSerializer(serializers.ModelSerializer):
     email = serializers.EmailField()
+    login = serializers.CharField()
     password = serializers.CharField()
+    receiveDistribution = serializers.BooleanField()
 
     class Meta:
         model = User
         fields = [
             'email',
-            'password'
+            'login',
+            'password',
+            'receiveDistribution'
         ]
 
     def create(self, validated_data):
-        return User.objects.create_user(username=validated_data['email'], password=validated_data['password'])
+        return User.objects.create_user(
+            username=validated_data['login'],
+            email=validated_data['email'],
+            password=validated_data['password']
+        )
 
 
 class AuthDataSerializer(serializers.Serializer):

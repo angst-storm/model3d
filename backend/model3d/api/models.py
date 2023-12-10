@@ -8,7 +8,11 @@ from treebeard.mp_tree import MP_Node
 
 
 class SiteSettings(SingletonModel):
-    contactsText = models.TextField(verbose_name='Текст с контактами')
+    address = models.TextField(verbose_name='Адрес')
+    addressUrl = models.URLField(verbose_name='Ссылка на адрес на картах')
+    phone = models.CharField(verbose_name='Номер телефона')
+    email = models.EmailField(verbose_name='Адрес электронной почты')
+    termsOfUseUrl = models.URLField(max_length=255, verbose_name='Ссылка на условия использования')
     receiveDistributionUrl = models.URLField(max_length=255, verbose_name='Ссылка на форму с получением рассылки')
     privacyPolicyUrl = models.URLField(max_length=255, verbose_name='Ссылка на политику конфиденциальности')
     userAgreementUrl = models.URLField(max_length=255, verbose_name='Ссылка на пользовательское соглашение')

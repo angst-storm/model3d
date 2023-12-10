@@ -85,10 +85,13 @@ class AuthenticationView(GenericViewSet):
         serializer = AuthDataSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        user = authenticate(username=request.data['email'], password=request.data['password'])
-
+        try:
+            login = User.objects.get(email=request.data['email']).username
+        except User.DoesNotExist:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+        user = authenticate(username=login, password=request.data['password'])
         if user is None:
-            return Response(status.HTTP_401_UNAUTHORIZED)
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
 
         add_auth(request, user)
 
