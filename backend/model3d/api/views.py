@@ -35,7 +35,6 @@ class SiteSettingsView(GenericViewSet):
 class RegistrationView(GenericViewSet):
     @swagger_auto_schema(tags=['Регистрация'],
                          operation_summary="Регистрирует пользователя",
-                         operation_description="Также отправляет на Email письмо с ссылкой для подтверждения адреса электронной почты",
                          request_body=RegDataSerializer,
                          responses={
                              201: "Пользователь зарегистрирован",
@@ -216,3 +215,24 @@ class TagView(GenericViewSet, mixins.ListModelMixin):
 class CategoryTreeView(GenericViewSet, mixins.ListModelMixin):
     queryset = Category.get_root_nodes()
     serializer_class = TreeCategorySerializer
+
+
+@permission_classes([AllowAny])
+class FilterView(GenericViewSet):
+    @swagger_auto_schema(tags=['Фильтры'],
+                         operation_summary='Все фильтры',
+                         responses={
+                             200: "Успешно",
+                         })
+    @action(methods=['get'], detail=False, url_path='filters')
+    def filters(self, request):
+        return Response({
+            "categoriesTree": TreeCategorySerializer(Category.get_root_nodes(), many=True).data,
+            "tags": TagSerializer(Tag.objects.all(), many=True).data,
+            "forms": ProductFormSerializer(ProductForm.objects.all(), many=True).data,
+            "materials": MaterialSerializer(Material.objects.all(), many=True).data,
+            "colors": ColorSerializer(Color.objects.all(), many=True).data,
+            "styles": StyleSerializer(Style.objects.all(), many=True).data,
+            "renders": RenderSerializer(Render.objects.all(), many=True).data,
+            "formats": FormatSerializer(Format.objects.all(), many=True).data
+        })
