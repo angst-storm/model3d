@@ -1,3 +1,6 @@
 venv
 .idea
 backend/model3d/media
+*.tfvars
+*.terraform
+terraform.tfstate*

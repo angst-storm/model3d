@@ -14,3 +14,7 @@ python manage.py runserver
 
 python manage.py createsuperuser
 ```
+
+```shell
+terraform apply -var-file="vars.tfvars"
+```
