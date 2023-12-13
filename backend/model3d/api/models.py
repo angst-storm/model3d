@@ -146,7 +146,6 @@ class Product(models.Model):
     name = models.CharField(max_length=255, verbose_name='Имя')
     cost = models.IntegerField(verbose_name='Цена')
     articul = models.CharField(max_length=255, verbose_name='Артикул')
-    formats = models.ManyToManyField(Format, blank=True, verbose_name='Расширения')
     render = models.ForeignKey(Render, on_delete=models.SET_NULL, null=True, verbose_name='Рендер')
     style = models.ForeignKey(Style, on_delete=models.SET_NULL, null=True, verbose_name='Стиль')
     colors = models.ManyToManyField(Color, blank=True, verbose_name='Цвета')
@@ -164,7 +163,6 @@ class Product(models.Model):
     publicationDate = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
     author = models.ForeignKey(User, on_delete=models.PROTECT, related_name='author', verbose_name='Автор')
     owners = models.ManyToManyField(User, related_name='owners', blank=True, verbose_name='Покупатели')
-    archive = models.FileField(verbose_name='Архив с моделью')
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, verbose_name='Категория')
     preview = models.ImageField(verbose_name='Изображение-превью')
 
@@ -182,3 +180,16 @@ class Product(models.Model):
     class Meta:
         verbose_name = "Продукт"
         verbose_name_plural = "Продукты"
+
+
+class ProductFile(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    format = models.ForeignKey(Format, on_delete=models.SET_NULL, null=True, verbose_name='Расширение')
+    file = models.FileField(verbose_name='3D-модель')
+
+    def __str__(self):
+        return f'Файл продукта: {self.file} ({self.format.name})'
+
+    class Meta:
+        verbose_name = "Файл продукта"
+        verbose_name_plural = "Файлы продукта"

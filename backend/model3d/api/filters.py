@@ -13,6 +13,8 @@ class ProductFilter(django_filters.FilterSet):
         ('publicationDate', 'date'),
         ('cost', 'cost')
     ])
+    formats = django_filters.ModelMultipleChoiceFilter(field_name='productfile__format',
+                                                       queryset=Format.objects.all())
 
     def belongs_to_category(self, queryset, name, value):
         return queryset.filter(Q(category=value) | Q(category__in=value.get_descendants()))
@@ -20,7 +22,6 @@ class ProductFilter(django_filters.FilterSet):
     class Meta:
         model = Product
         fields = {
-            'formats': ['exact'],
             'colors': ['exact'],
             'materials': ['exact'],
             'render': ['exact'],

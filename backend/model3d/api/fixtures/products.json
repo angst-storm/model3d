@@ -19,14 +19,8 @@
       "description": "Раскладывающийся диван с механизмом типа \"улитка\". Подходит для узких помещений. Модель высшего качества",
       "publicationDate": "2024-01-20T07:41:34.545Z",
       "author": 1,
-      "archive": "divan.rar",
       "preview": "divan-preview.jpg",
       "category": 2,
-      "formats": [
-        1,
-        2,
-        3
-      ],
       "colors": [
         1,
         2
@@ -41,6 +35,24 @@
         3,
         4
       ]
+    }
+  },
+  {
+    "model": "api.productfile",
+    "pk": 1,
+    "fields": {
+      "product": 1,
+      "format": 1,
+      "file": "divan.obj"
+    }
+  },
+  {
+    "model": "api.productfile",
+    "pk": 2,
+    "fields": {
+      "product": 1,
+      "format": 3,
+      "file": "divan.c3d"
     }
   }
 ]

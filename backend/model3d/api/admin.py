@@ -14,6 +14,10 @@ class SocialMediaInline(admin.TabularInline):
     model = SocialMedia
 
 
+class ProductFileInline(admin.TabularInline):
+    model = ProductFile
+
+
 @admin.register(SiteSettings)
 class SiteSettingsAdmin(SingletonModelAdmin):
     inlines = [FooterURLInline, SocialMediaInline]
@@ -29,11 +33,12 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'category', 'articul', 'publicationDate', 'cost', 'isPopular', 'author')
     list_display_links = ('name',)
     list_filter = (
-        'category', 'cost', 'isPopular', 'formats', 'render', 'style',
-        'colors', 'materials', 'form', 'tags', 'platform', 'author'
+        'category', 'cost', 'isPopular', 'render', 'style',
+        'colors', 'materials', 'form', 'tags', 'platform', 'author', 'productfile__format'
     )
     search_fields = ('name', 'articul')
     ordering = ('id', 'publicationDate', 'cost', 'isPopular')
+    inlines = [ProductFileInline]
 
 
 admin.site.register(Format)

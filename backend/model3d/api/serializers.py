@@ -176,8 +176,18 @@ class TreeCategorySerializer(serializers.ModelSerializer):
         ]
 
 
+class ProductFileSerializer(serializers.ModelSerializer):
+    format = FormatSerializer(read_only=True)
+
+    class Meta:
+        model = ProductFile
+        fields = [
+            'format',
+            'file'
+        ]
+
+
 class ProductSerializer(serializers.ModelSerializer):
-    formats = FormatSerializer(many=True, read_only=True)
     render = RenderSerializer(read_only=True)
     style = StyleSerializer(read_only=True)
     colors = ColorSerializer(many=True, read_only=True)
@@ -186,6 +196,7 @@ class ProductSerializer(serializers.ModelSerializer):
     tags = TagSerializer(many=True, read_only=True)
     size = serializers.SerializerMethodField()
     category = CategorySerializer(read_only=True)
+    files = ProductFileSerializer(many=True, read_only=True, source='productfile_set')
 
     def get_size(self, obj):
         return {'x': obj.sizeX, 'y': obj.sizeY, 'z': obj.sizeZ}
@@ -197,7 +208,6 @@ class ProductSerializer(serializers.ModelSerializer):
             'name',
             'cost',
             'articul',
-            'formats',
             'render',
             'style',
             'colors',
@@ -213,7 +223,7 @@ class ProductSerializer(serializers.ModelSerializer):
             'publicationDate',
             'author',
             'owners',
-            'archive',
+            'files',
             'category',
             'isFree',
             'modelFileSizeBytes',
