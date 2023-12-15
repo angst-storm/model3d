@@ -153,13 +153,13 @@ class Product(models.Model):
     form = models.ForeignKey(ProductForm, on_delete=models.SET_NULL, null=True, verbose_name='Форма')
     tags = models.ManyToManyField(Tag, blank=True, verbose_name='Тэги')
     platform = models.CharField(max_length=255, verbose_name='Платформа моделирования')
-    isPopular = models.BooleanField(verbose_name='Популярная модель')
+    isPopular = models.BooleanField(verbose_name='Популярная модель', default=False)
     sizeX = models.IntegerField(verbose_name='Размер по оси X')
     sizeY = models.IntegerField(verbose_name='Размер по оси Y')
     sizeZ = models.IntegerField(verbose_name='Размер по оси Z')
     polygonsCount = models.IntegerField(verbose_name='Количество полигонов')
-    buyUrl = models.URLField(max_length=255, verbose_name='Ссылка на покупку')
-    description = models.TextField(verbose_name='Описание')
+    buyUrl = models.URLField(max_length=255, verbose_name='Ссылка на покупку', blank=True)
+    description = models.TextField(verbose_name='Описание', blank=True)
     publicationDate = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
     author = models.ForeignKey(User, on_delete=models.PROTECT, related_name='author', verbose_name='Автор')
     owners = models.ManyToManyField(User, related_name='owners', blank=True, verbose_name='Покупатели')
@@ -184,7 +184,7 @@ class Product(models.Model):
 
 class ProductFile(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    format = models.ForeignKey(Format, on_delete=models.SET_NULL, null=True, verbose_name='Расширение')
+    format = models.ForeignKey(Format, on_delete=models.PROTECT, verbose_name='Расширение')
     file = models.FileField(verbose_name='3D-модель')
 
     def __str__(self):

@@ -229,3 +229,42 @@ class ProductSerializer(serializers.ModelSerializer):
             'modelFileSizeBytes',
             'preview'
         ]
+
+
+class ProductFileCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductFile
+        fields = [
+            'format',
+            'file'
+        ]
+
+
+class ProductCreateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Product
+        fields = [
+            'id',
+            'name',
+            'cost',
+            'articul',
+            'render',
+            'style',
+            'colors',
+            'materials',
+            'form',
+            'platform',
+            'sizeX',
+            'sizeY',
+            'sizeZ',
+            'polygonsCount',
+            'buyUrl',
+            'description',
+            'category',
+            'preview',
+        ]
+
+    def save(self, **kwargs):
+        user = self.context['request'].user
+        super().save(author=user)

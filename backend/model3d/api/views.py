@@ -7,6 +7,7 @@ from rest_framework import status, exceptions, mixins
 from rest_framework.decorators import action, authentication_classes, permission_classes
 from rest_framework.filters import SearchFilter
 from rest_framework.pagination import LimitOffsetPagination
+from rest_framework.parsers import MultiPartParser
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet, ReadOnlyModelViewSet
@@ -135,14 +136,45 @@ class AuthenticationView(GenericViewSet):
     responses={
         404: "Продукт не найден"
     }))
-@permission_classes([AllowAny])
-class ProductView(ReadOnlyModelViewSet):
+@method_decorator(name='list', decorator=permission_classes([AllowAny]))
+@method_decorator(name='retrieve', decorator=permission_classes([AllowAny]))
+@method_decorator(name='create', decorator=swagger_auto_schema(
+    tags=['Продукты'],
+    operation_summary='Создать продукт'))
+class ProductView(ReadOnlyModelViewSet, mixins.CreateModelMixin):
     queryset = Product.objects.all()
-    serializer_class = ProductSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter]
     search_fields = ['$name', '=articul']
     filterset_class = ProductFilter
     pagination_class = LimitOffsetPagination
+
+    def get_parsers(self):
+        if 'docs' in self.request.path and self.action in ['create', 'add_file']:
+            return [MultiPartParser]
+        else:
+            return super().get_parsers()
+
+    def get_serializer_class(self):
+        if self.action == 'create':
+            return ProductCreateSerializer
+        elif self.action == 'add_file':
+            return ProductFileCreateSerializer
+        else:
+            return ProductSerializer
+
+    @swagger_auto_schema(
+        tags=['Продукты'],
+        operation_summary='Добавить файл с расширением к продукту'
+    )
+    @action(methods=['post'], detail=True, url_path='addFile', url_name='add-file')
+    def add_file(self, request, *args, **kwargs):
+        product = self.get_object()
+        data = request.data.dict()
+        data['product'] = product.id
+        serializer = ProductFileCreateSerializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save(product=product)
+        return Response(status=status.HTTP_201_CREATED)
 
 
 @method_decorator(name='list', decorator=swagger_auto_schema(
