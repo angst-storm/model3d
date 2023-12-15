@@ -8,7 +8,7 @@ from rest_framework.decorators import action, authentication_classes, permission
 from rest_framework.filters import SearchFilter
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.parsers import MultiPartParser
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet, ReadOnlyModelViewSet
 
@@ -47,7 +47,7 @@ class RegistrationView(GenericViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
-        return Response(status.HTTP_201_CREATED)
+        return Response(status=status.HTTP_201_CREATED)
 
     @swagger_auto_schema(tags=['Регистрация'],
                          operation_summary='Проверяет email на уникальность',
@@ -136,8 +136,6 @@ class AuthenticationView(GenericViewSet):
     responses={
         404: "Продукт не найден"
     }))
-@method_decorator(name='list', decorator=permission_classes([AllowAny]))
-@method_decorator(name='retrieve', decorator=permission_classes([AllowAny]))
 @method_decorator(name='create', decorator=swagger_auto_schema(
     tags=['Продукты'],
     operation_summary='Создать продукт'))
@@ -147,6 +145,12 @@ class ProductView(ReadOnlyModelViewSet, mixins.CreateModelMixin):
     search_fields = ['$name', '=articul']
     filterset_class = ProductFilter
     pagination_class = LimitOffsetPagination
+
+    def get_permissions(self):
+        if self.action in ['list', 'retrieve']:
+            return [AllowAny()]
+        else:
+            return [IsAuthenticated()]
 
     def get_parsers(self):
         if 'docs' in self.request.path and self.action in ['create', 'add_file']:
