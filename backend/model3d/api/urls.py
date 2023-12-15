@@ -8,7 +8,7 @@ from .views import *
 schema_view = get_schema_view(
     openapi.Info(
         title='Model3D API',
-        default_version='v1.0'
+        default_version=os.environ['VERSION']
     ),
     public=True,
     permission_classes=[AllowAny]

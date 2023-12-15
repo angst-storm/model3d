@@ -37,7 +37,7 @@ services:
       - postgres-data:/var/lib/postgresql/data
   django:
     container_name: django
-    image: ${var.image}
+    image: ${var.image_registry}:${var.image_tag}
     environment:
       SECRET_KEY: ${var.secret_key}
       DEBUG: "True"
@@ -49,6 +49,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_SSLMODE: disable
+      VERSION: ${var.image_tag}
     ports:
       - "8000:8000"
     depends_on:

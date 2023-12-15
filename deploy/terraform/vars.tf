@@ -6,7 +6,11 @@ variable "domain" {
   type = string
 }
 
-variable "image" {
+variable "image_registry" {
+  type = string
+}
+
+variable "image_tag" {
   type = string
 }
 
