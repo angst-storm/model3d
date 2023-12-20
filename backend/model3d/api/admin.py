@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 from solo.admin import SingletonModelAdmin
 from treebeard.admin import TreeAdmin
 from treebeard.forms import movenodeform_factory
@@ -16,6 +17,10 @@ class SocialMediaInline(admin.TabularInline):
 
 class ProductFileInline(admin.TabularInline):
     model = ProductFile
+
+
+class UserProfileInline(admin.StackedInline):
+    model = UserProfile
 
 
 @admin.register(SiteSettings)
@@ -39,6 +44,14 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ('name', 'articul')
     ordering = ('id', 'publicationDate', 'cost', 'isPopular')
     inlines = [ProductFileInline]
+
+
+admin.site.unregister(User)
+
+
+@admin.register(User)
+class UserWithProfileAdmin(UserAdmin):
+    inlines = [UserProfileInline]
 
 
 admin.site.register(Format)

@@ -193,3 +193,21 @@ class ProductFile(models.Model):
     class Meta:
         verbose_name = "Файл продукта"
         verbose_name_plural = "Файлы продукта"
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    checkMark = models.BooleanField(default=False)
+    receiveDistribution = models.BooleanField(default=False)
+    image = models.ImageField(null=True)
+
+    @property
+    def productsCount(self):
+        return Product.objects.filter(author=self.user).count()
+
+    def __str__(self):
+        return f'Профиль пользователя {self.user}'
+
+    class Meta:
+        verbose_name = "Профиль пользователя"
+        verbose_name_plural = "Профили пользователей"

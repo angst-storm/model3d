@@ -11,6 +11,16 @@
     }
   },
   {
+    "model": "api.userprofile",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "checkMark": true,
+      "receiveDistribution": true,
+      "image": "serez.jpg"
+    }
+  },
+  {
     "model": "auth.user",
     "pk": 2,
     "fields": {
@@ -19,6 +29,16 @@
       "password": "pbkdf2_sha256$720000$nnvdOqRwGLuWVDsV8U8EBJ$OMIYkH7zu35LhDeIUz487D2HhhWqJP9hCdefF9HeKjQ=",
       "is_superuser": true,
       "is_staff": true
+    }
+  },
+  {
+    "model": "api.userprofile",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "checkMark": true,
+      "receiveDistribution": true,
+      "image": "seva.jpg"
     }
   },
   {
@@ -33,6 +53,16 @@
     }
   },
   {
+    "model": "api.userprofile",
+    "pk": 3,
+    "fields": {
+      "user": 3,
+      "checkMark": false,
+      "receiveDistribution": false,
+      "image": null
+    }
+  },
+  {
     "model": "auth.user",
     "pk": 4,
     "fields": {
@@ -41,6 +71,16 @@
       "password": "pbkdf2_sha256$720000$iX9lCWtv6bTp9Id20iBssY$hZlyOjSVwT3GAzp+RRH3FhldBZnKB2K9FSQGzlc0BT4=",
       "is_superuser": true,
       "is_staff": true
+    }
+  },
+  {
+    "model": "api.userprofile",
+    "pk": 4,
+    "fields": {
+      "user": 4,
+      "checkMark": false,
+      "receiveDistribution": false,
+      "image": null
     }
   },
   {
@@ -55,6 +95,16 @@
     }
   },
   {
+    "model": "api.userprofile",
+    "pk": 5,
+    "fields": {
+      "user": 5,
+      "checkMark": false,
+      "receiveDistribution": false,
+      "image": null
+    }
+  },
+  {
     "model": "auth.user",
     "pk": 6,
     "fields": {
@@ -63,6 +113,16 @@
       "password": "pbkdf2_sha256$720000$ZihJuhYGriY65kQWEsJExA$6FNFftrle+5XHlYVkGx8sGpRsaH9DQZ1/xYIGjjW4WY=",
       "is_superuser": false,
       "is_staff": false
+    }
+  },
+  {
+    "model": "api.userprofile",
+    "pk": 6,
+    "fields": {
+      "user": 6,
+      "checkMark": false,
+      "receiveDistribution": false,
+      "image": null
     }
   }
 ]

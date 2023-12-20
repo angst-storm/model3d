@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rest_framework.validators import UniqueValidator
 
 from .models import *
 
@@ -42,8 +43,8 @@ class SiteSettingsSerializer(serializers.ModelSerializer):
 
 
 class RegDataSerializer(serializers.ModelSerializer):
-    email = serializers.EmailField()
-    login = serializers.CharField()
+    email = serializers.EmailField(validators=[UniqueValidator(queryset=User.objects.all())])
+    login = serializers.CharField(source='username', validators=[UniqueValidator(queryset=User.objects.all())])
     password = serializers.CharField()
     receiveDistribution = serializers.BooleanField()
 
@@ -57,11 +58,13 @@ class RegDataSerializer(serializers.ModelSerializer):
         ]
 
     def create(self, validated_data):
-        return User.objects.create_user(
-            username=validated_data['login'],
+        user = User.objects.create_user(
+            username=validated_data['username'],
             email=validated_data['email'],
             password=validated_data['password']
         )
+        UserProfile.objects.create(user=user, receiveDistribution=validated_data['receiveDistribution'])
+        return user
 
 
 class AuthDataSerializer(serializers.Serializer):
@@ -268,3 +271,21 @@ class ProductCreateSerializer(serializers.ModelSerializer):
     def save(self, **kwargs):
         user = self.context['request'].user
         super().save(author=user)
+
+
+class UserSerializer(serializers.ModelSerializer):
+    login = serializers.CharField(source='username')
+    checkMark = serializers.BooleanField(source='userprofile.checkMark')
+    image = serializers.ImageField(source='userprofile.image')
+    productsCount = serializers.IntegerField(source='userprofile.productsCount')
+
+    class Meta:
+        model = User
+        fields = [
+            'id',
+            'login',
+            'email',
+            'checkMark',
+            'image',
+            'productsCount'
+        ]

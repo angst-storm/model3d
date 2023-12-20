@@ -272,3 +272,9 @@ class FilterView(GenericViewSet):
             "renders": RenderSerializer(Render.objects.all(), many=True).data,
             "formats": FormatSerializer(Format.objects.all(), many=True).data
         })
+
+
+@permission_classes([AllowAny])
+class UserView(ReadOnlyModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
