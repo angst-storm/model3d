@@ -274,7 +274,31 @@ class FilterView(GenericViewSet):
         })
 
 
-@permission_classes([AllowAny])
+@method_decorator(name='list', decorator=swagger_auto_schema(
+    tags=['Пользователи'],
+    operation_summary='Все пользователи'))
+@method_decorator(name='retrieve', decorator=swagger_auto_schema(
+    tags=['Пользователи'],
+    operation_summary='Пользователь по его ID',
+    responses={
+        404: "Пользователь не найден"
+    }))
 class UserView(ReadOnlyModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+    def get_permissions(self):
+        if self.action in ['list', 'retrieve']:
+            return [AllowAny()]
+        else:
+            return [IsAuthenticated()]
+
+    @swagger_auto_schema(tags=['Пользователи'],
+                         operation_summary='Текущий пользователь',
+                         responses={
+                             200: UserSerializer(),
+                         })
+    @action(methods=['get'], detail=False, url_path='current')
+    @permission_classes([IsAuthenticated])
+    def current_user(self, request):
+        return Response(UserSerializer(request.user).data)
