@@ -162,7 +162,6 @@ class Product(models.Model):
     description = models.TextField(verbose_name='Описание', blank=True)
     publicationDate = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
     author = models.ForeignKey(User, on_delete=models.PROTECT, related_name='author', verbose_name='Автор')
-    owners = models.ManyToManyField(User, related_name='owners', blank=True, verbose_name='Покупатели')
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, verbose_name='Категория')
     preview = models.ImageField(verbose_name='Изображение-превью')
 
@@ -173,6 +172,10 @@ class Product(models.Model):
     @property
     def modelFileSizeBytes(self):
         return os.path.getsize(self.archive.path)
+
+    @property
+    def purchaseCount(self):
+        return Purchase.objects.filter(product=self).count()
 
     def __str__(self):
         return f'Продукт: "{self.name}" ({self.articul}) - {self.category.name}'
@@ -211,3 +214,17 @@ class UserProfile(models.Model):
     class Meta:
         verbose_name = "Профиль пользователя"
         verbose_name_plural = "Профили пользователей"
+
+
+class Purchase(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.PROTECT, verbose_name='Купленная модель')
+    purchaser = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Покупатель')
+    date = models.DateTimeField(auto_now_add=True, verbose_name='Дата совершения покупки')
+    amount = models.IntegerField(verbose_name="Сумма покупки")
+
+    def __str__(self):
+        return f'Покупка: продукт [{self.product}] -> [{self.purchaser}]'
+
+    class Meta:
+        verbose_name = "Покупка"
+        verbose_name_plural = "Покупки"

@@ -225,12 +225,12 @@ class ProductSerializer(serializers.ModelSerializer):
             'description',
             'publicationDate',
             'author',
-            'owners',
             'files',
             'category',
             'isFree',
             'modelFileSizeBytes',
-            'preview'
+            'preview',
+            'purchaseCount'
         ]
 
 
@@ -289,3 +289,13 @@ class UserSerializer(serializers.ModelSerializer):
             'image',
             'productsCount'
         ]
+
+
+class PurchaseSerializer(serializers.Serializer):
+    products = serializers.PrimaryKeyRelatedField(queryset=Product.objects.all(), many=True)
+
+    def save(self, **kwargs):
+        user = self.context['request'].user
+        Purchase.objects.bulk_create([Purchase(product=product, amount=product.cost, purchaser=user)
+                                      for product in self.validated_data['products']
+                                      if not Purchase.objects.filter(product=product, purchaser=user).exists()])

@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate
 from django.shortcuts import redirect
 from django.utils.decorators import method_decorator
 from django_filters.rest_framework import DjangoFilterBackend
-from drf_yasg.utils import swagger_auto_schema
+from drf_yasg.utils import swagger_auto_schema, no_body
 from rest_framework import status, exceptions, mixins
 from rest_framework.decorators import action, authentication_classes, permission_classes
 from rest_framework.filters import SearchFilter
@@ -179,6 +179,31 @@ class ProductView(ReadOnlyModelViewSet, mixins.CreateModelMixin):
         serializer.is_valid(raise_exception=True)
         serializer.save(product=product)
         return Response(status=status.HTTP_201_CREATED)
+
+    @swagger_auto_schema(
+        tags=['Продукты'],
+        operation_summary='Продукты, купленные текущим пользователем'
+    )
+    @action(methods=['get'], detail=False, url_path='purchasedByCurrentUser', url_name='purchased')
+    def purchasedByCurrentUser(self, request, *args, **kwargs):
+        res = [p.product for p in Purchase.objects.filter(purchaser=request.user)]
+        return Response(ProductSerializer(res, many=True).data)
+
+    @swagger_auto_schema(
+        tags=['Продукты'],
+        operation_summary='Купить список продуктов',
+        request_body=PurchaseSerializer,
+        responses={
+            200: "Продукты куплены",
+            400: "Данные не прошли валидацию"
+        }
+    )
+    @action(methods=['post'], detail=False, url_path='purchase', url_name='purchase')
+    def purchase(self, request, *args, **kwargs):
+        serializer = PurchaseSerializer(data=request.data, context={'request': request})
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(status=status.HTTP_200_OK)
 
 
 @method_decorator(name='list', decorator=swagger_auto_schema(

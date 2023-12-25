@@ -30,10 +30,6 @@
       ],
       "tags": [
         4
-      ],
-      "owners": [
-        3,
-        4
       ]
     }
   },
@@ -53,6 +49,26 @@
       "product": 1,
       "format": 3,
       "file": "divan.c3d"
+    }
+  },
+  {
+    "model": "api.purchase",
+    "pk": 1,
+    "fields": {
+      "product": 1,
+      "purchaser": 1,
+      "date": "2024-01-21T08:10:05.215Z",
+      "amount": 1000
+    }
+  },
+  {
+    "model": "api.purchase",
+    "pk": 2,
+    "fields": {
+      "product": 1,
+      "purchaser": 2,
+      "date": "2024-01-21T08:10:05.215Z",
+      "amount": 1000
     }
   }
 ]
