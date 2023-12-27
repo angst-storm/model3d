@@ -25,7 +25,11 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 8px;
+    gap: var(--s-sp);
+
+    &[data-authorized = false] {
+        gap: var(--m-sp);
+    }
 }
 
 .nav-button {

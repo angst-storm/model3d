@@ -1,30 +1,28 @@
 import './footer.css'
 import {M3dButton} from "@model3d/controls";
-import { useInfoDocsQuery, useSiteSettingsQuery} from "@storage";
+import {useSiteSettingsQuery} from "@storage";
 import {useEffect, useState} from "react";
+import {siteSettingsMapper} from "../../../../../../../storage/server/common/models/mappers/site-settings.mapper";
+import {ISiteSettingsModel} from "../../../../../../../storage/server/common/models/inapp/site-settings.model";
 
 export interface IFooterProps {
     className?: string
 }
 
 export function Footer(props: IFooterProps) {
-    const docsRequest = useInfoDocsQuery();
     const settingsRequest = useSiteSettingsQuery();
 
     useEffect(() => {
-        if (!docsRequest.isLoading && !settingsRequest.isLoading) {
-            recalculateProposals(settingsRequest.currentData?.footerUrls ?? [])
+        if (!settingsRequest.isLoading) {
+            updateFooter(settingsRequest.currentData)
         }
-    }, [docsRequest, settingsRequest])
+    }, [settingsRequest])
 
-    function recalculateProposals(newData: {text: string, link: string}[]): void {
-        const proposalAdditional = (newData)
-            .map((footerUrl) => ({
-                text: footerUrl.text,
-                link: footerUrl.link,
-            }))
-
-        setProposalsAll(proposalsHardcoded.concat(proposalAdditional))
+    function updateFooter(mappedRequest?: ISiteSettingsModel): void {
+        setProposalsAll(proposalsHardcoded.concat(mappedRequest?.footerUrls ?? []))
+        setSocialMedia(mappedRequest?.socialMedia ?? [])
+        setContacts(mappedRequest?.contacts ?? [])
+        setDocs(mappedRequest?.docs ?? [])
     }
 
     const proposalsHardcoded: { text: string, link?: string }[] = [
@@ -46,57 +44,10 @@ export function Footer(props: IFooterProps) {
         }
     ]
 
-    const [proposalsAll, setProposalsAll] = useState([] as { text: string, link?: string }[])
-
-
-    const contacts: { text: string, link?: string }[] = [
-        {
-            text: '+7 (495) 215-24-47',
-            link: 'tel:+74952152447'
-        },
-        {
-            text: 'info@ceramic3d.ru',
-            link: 'mailto:info@ceramic3d.ru'
-        },
-        {
-            text: 'г.Екатеринбург, проезд Решетникова 22А, оф.410',
-        },
-    ]
-
-    const social: { iconName: string, link?: string }[] = [
-        {
-            iconName: 'vk',
-            link: 'https://vk.com/club_ceramic3d?from=groups'
-        },
-        {
-            iconName: 'telegram',
-            link: 'https://t.me/ceramic3d_info'
-        },
-        {
-            iconName: 'youtube',
-            link: 'https://www.youtube.com/c/Ceramic3D'
-        },
-    ]
-
-    function getDocs(): { title: string, docLink?: string, downloadName?: string }[] {
-        return [
-            {
-                title: 'Политика конфиденциальности',
-                docLink: docsRequest.currentData?.policyDoc,
-                downloadName: 'policy_ceramic'
-            },
-            {
-                title: 'Пользовательское соглашение',
-                docLink: docsRequest.currentData?.agreementDoc,
-                downloadName: 'agreement_ceramic'
-            },
-            {
-                title: 'Контактная информация',
-                docLink: docsRequest.currentData?.contactsDoc,
-                downloadName: 'contacts'
-            }
-        ]
-    }
+    const [proposalsAll, setProposalsAll] = useState([] as { text: string, link?: string }[]);
+    const [socialMedia, setSocialMedia] = useState([] as { iconLink: string, link?: string }[]);
+    const [contacts, setContacts] = useState([] as { text: string, link?: string }[]);
+    const [docs, setDocs] = useState([] as { title: string, docLink?: string, downloadName?: string }[]);
 
     return <div className={`footer-layout ${props.className ?? ''}`}>
         <div className={'grid-container'}>
@@ -142,12 +93,12 @@ export function Footer(props: IFooterProps) {
                     </div>
                     <div className={'social-list'}>
                         {
-                            social.map((socialNetwork) => {
-                                return <div key={socialNetwork.iconName} className={'rounded-button'}>
+                            socialMedia.map((socialNetwork) => {
+                                return <div key={socialNetwork.iconLink} className={'rounded-button'}>
                                     <a href={socialNetwork.link} target="_blank" rel="noopener noreferrer">
                                         <img
                                             className={'social-icon'}
-                                            src={require(`@assets/icons/svg/${socialNetwork.iconName}.svg`)}
+                                            src={socialNetwork.iconLink}
                                         ></img>
                                     </a>
                                 </div>
@@ -157,7 +108,7 @@ export function Footer(props: IFooterProps) {
                 </div>
                 <div className={'footer-column docs'}>
                     {
-                        !docsRequest.isLoading && getDocs().map((doc) => {
+                        !settingsRequest.isLoading && docs.map((doc) => {
                             return <li key={doc.title} className={'link-list-element M3-body-m'}>
                                 <a className={'clickable-link'}
                                    href={doc.docLink}

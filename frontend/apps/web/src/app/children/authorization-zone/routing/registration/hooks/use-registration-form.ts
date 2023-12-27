@@ -48,7 +48,8 @@ export function useRegistrationForm() {
     const receiveMailControlOptions: IM3DCheckboxProps = {
         name: 'receiveMail',
         control: formOutput.control,
-        label: 'Получать уведомления на почту'
+        label: 'Получать уведомления на почту',
+        format: 'large'
     }
 
     return {

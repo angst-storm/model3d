@@ -13,6 +13,8 @@
     --surface-container: #ECEEEF;
     /*M3/sys/light/on-primary-container*/
     --on-primary-continer: #001E31;
+    /*M3/sys/light/surface-variant*/
+    --surface-variant: #DEE3EB;
 
     /*M3/sys/light/on-surface*/
     --text-primary: #191C1D;

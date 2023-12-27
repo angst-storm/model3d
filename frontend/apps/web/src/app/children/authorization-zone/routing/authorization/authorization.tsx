@@ -31,19 +31,16 @@ export function Authorization() {
     function submitForm() {
         if (formState.isValid) {
             const request = authorizationTrigger({
-                login: getValues('email'),
+                email: getValues('email'),
                 password: getValues('password')
             })
 
             request
-                .then((result) => {
-                    if (result) {
+                .then((value) => {
+                    if (!value.hasOwnProperty('error')) {
                         dispatch(authorize())
+                        navigate('/catalog')
                     }
-                    console.log(authorizationResult)
-                })
-                .catch((error) => {
-                    console.log(error)
                 })
         }
     }

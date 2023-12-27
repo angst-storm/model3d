@@ -1,0 +1,17 @@
+export interface IProductListParamsModel {
+    formats?: string[],
+    colors?: string[],
+    materials?: string[],
+    render?: string[],
+    style?: string[],
+    form?: string[],
+    isPopular?: string[],
+    cost__lte?: string[],
+    cost__gte?: string[],
+    category?: string[],
+    author?: string[],
+    ordering?: [],
+    search?: string,
+    limit?: number,
+    offset?: number,
+}

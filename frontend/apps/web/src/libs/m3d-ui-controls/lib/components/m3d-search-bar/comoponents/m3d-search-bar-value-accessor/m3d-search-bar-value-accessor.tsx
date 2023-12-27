@@ -6,15 +6,14 @@ import styles from './m3d-search-bar-value-accessor.module.css';
 export interface IM3dSearchBarValueAccessorProps extends IFormControlCreateOptions<string> {
     supportingText?: string,
     leadingIcon?: string,
-    trailingIcon?: string,
-    inputType?: string,
-    className?: string
+    className?: string,
+    onSearch?: (searchValue: string) => void,
+    onClear?: () => void
 }
 
 export function M3dSearchBarValueAccessor(props: IM3dSearchBarValueAccessorProps) {
     const {
-        field,
-        fieldState
+        field
     } = useController({
         control: props.control,
         name: props.name,
@@ -24,16 +23,26 @@ export function M3dSearchBarValueAccessor(props: IM3dSearchBarValueAccessorProps
         props.onValueChanges?.(event.target.value);
     }
 
-    const [iT,chIT] = useState(props.inputType)
+    function search() {
+        if (field.value) {
+            props.onSearch?.(field.value)
+        }
+    }
 
-    useEffect(() => {
-        chIT(props.inputType || 'text')
-    }, [props])
+    function processKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+        if (event.code === 'Enter') {
+            search();
+        }
+    }
+
+    function clear() {
+        props.onClear?.()
+    }
 
     return <div className={`${styles['search-input-outer']} ${props.className ?? ''}`}>
         <div className={`${styles['search-input-container']} M3-body-l`}>
             {
-                props.leadingIcon && <img className={styles['leading-icon']} src={require('@assets/icons/svg/' + props.leadingIcon + '.svg')} alt={'leading icon'}/>
+                props.leadingIcon && <img className={styles['leading-icon']} src={require('@assets/icons/svg/' + props.leadingIcon + '.svg')} alt={'leading icon'} onClick={search}/>
             }
             <div className={styles['search-label-container']}>
                 {
@@ -41,10 +50,10 @@ export function M3dSearchBarValueAccessor(props: IM3dSearchBarValueAccessorProps
                         {props.label}
                     </label>
                 }
-                <input {...props.control.register(props.name, { onChange: handleChange })} type={iT} className={styles['search-input-value-accessor']}/>
+                <input {...props.control.register(props.name, { onChange: handleChange })} type={'text'} className={styles['search-input-value-accessor']} onKeyDown={processKeyDown}/>
             </div>
             {
-                props.trailingIcon && <img className={styles['trailing-icon']} src={require('@assets/icons/svg/' + props.trailingIcon + '.svg')} alt={'trailing icon'}/>
+                field.value && <img className={styles['trailing-icon']} src={require('@assets/icons/svg/cross.svg').default} onClick={clear} alt={'trailing icon'}/>
             }
         </div>
     </div>

@@ -1,6 +1,7 @@
 export interface IInfoDocsResponseModel {
-    termsDoc?: any,
-    policyDoc?: any,
-    contactsDoc?: any,
-    agreementDoc?: any,
+    termsOfUseUrl?: string
+    privacyPolicyUrl?: string
+    userAgreementUrl?: string
+    contactInformationUrl?: string
+    receiveDistributionsUrl?: string
 }

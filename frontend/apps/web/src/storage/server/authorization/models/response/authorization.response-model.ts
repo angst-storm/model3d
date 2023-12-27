@@ -1,3 +1,3 @@
 export interface IAuthorizationResponseModel {
-    authorized: boolean
+    authenticated: boolean
 }

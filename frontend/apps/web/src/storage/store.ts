@@ -1,5 +1,5 @@
 import { configureStore} from "@reduxjs/toolkit";
-import sliceReducer from "./authorizedSlice";
+import sliceReducer from "./authorized-slice";
 import {baseApi} from "./server/base-api";
 
 export const store = configureStore({
