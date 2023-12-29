@@ -2,7 +2,6 @@ import './footer.css'
 import {M3dButton} from "@model3d/controls";
 import {useSiteSettingsQuery} from "@storage";
 import {useEffect, useState} from "react";
-import {siteSettingsMapper} from "../../../../../../../storage/server/common/models/mappers/site-settings.mapper";
 import {ISiteSettingsModel} from "../../../../../../../storage/server/common/models/inapp/site-settings.model";
 
 export interface IFooterProps {
@@ -23,6 +22,7 @@ export function Footer(props: IFooterProps) {
         setSocialMedia(mappedRequest?.socialMedia ?? [])
         setContacts(mappedRequest?.contacts ?? [])
         setDocs(mappedRequest?.docs ?? [])
+        setDistributionUrl(mappedRequest?.receiveDistributionLink ?? '')
     }
 
     const proposalsHardcoded: { text: string, link?: string }[] = [
@@ -48,6 +48,7 @@ export function Footer(props: IFooterProps) {
     const [socialMedia, setSocialMedia] = useState([] as { iconLink: string, link?: string }[]);
     const [contacts, setContacts] = useState([] as { text: string, link?: string }[]);
     const [docs, setDocs] = useState([] as { title: string, docLink?: string, downloadName?: string }[]);
+    const [distributionUrl, setDistributionUrl] = useState('');
 
     return <div className={`footer-layout ${props.className ?? ''}`}>
         <div className={'grid-container'}>
@@ -89,7 +90,9 @@ export function Footer(props: IFooterProps) {
                 </div>
                 <div className={'footer-column social'}>
                     <div className={'receiving-button'}>
-                        <M3dButton>Получать рассылку</M3dButton>
+                        <a href={distributionUrl} target="_blank" rel="noopener noreferrer">
+                            <M3dButton>Получать рассылку</M3dButton>
+                        </a>
                     </div>
                     <div className={'social-list'}>
                         {

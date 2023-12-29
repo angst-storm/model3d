@@ -1,55 +1,47 @@
-import {IM3DCheckboxProps, M3DCheckbox} from "@model3d/controls";
-import {useFieldArray, useForm} from "react-hook-form";
+import {M3DCheckbox} from "@model3d/controls";
+import {FieldValues, useFieldArray} from "react-hook-form";
 import {
     IFilterBaseResponseModel
 } from "../../../../../../../storage/server/product/models/response/filter-base.response-model";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import styles from './filter-picker.module.css'
+import {Control} from "react-hook-form/dist/types";
 
 export interface IFilterPickerProps {
     filterArray: IFilterBaseResponseModel[],
-    filterTitle: string
+    filterTitle: string,
+    control: Control<FieldValues, any>,
+    controlName: string
 }
 
 export function FilterPicker(props: IFilterPickerProps) {
-    const { control, register } = useForm();
     const { fields, append, prepend, remove, swap, move, insert } = useFieldArray({
-        control, // control props comes from useForm (optional: if you are using FormContext)
-        name: "test", // unique name for your Field Array
+        control: props.control,
+        name: props.controlName,
     });
 
-    const [filterProperties, setFilterProperties] = useState<Map<number, IM3DCheckboxProps>>(new Map())
-
     useEffect(() => {
-        props.filterArray.forEach((value) => {
-            append(value.id.toString())
-        })
+        remove()
 
-        setFilterProperties(new Map(
-            props.filterArray.map((filter) => {
-                return [
-                    filter.id,
-                    {
-                        control: control,
-                        name: filter.id.toString(),
-                        label: filter.name,
-                        format: 'small'
-                    } as IM3DCheckboxProps
-                ]
-            })
-        ))
-    }, []);
+        props.filterArray.forEach((value) => {
+            append({ value: false, id: value.id })
+        });
+
+    }, [props]);
+
 
     return <div className={styles['filter-block']}>
         <div className={`${styles['filter-title']} M3-label-l`}>{props.filterTitle}</div>
         <ul className={styles['filter-list']}>
             {
-                props.filterArray && props.filterArray.map((format) => {
-                    const props: IM3DCheckboxProps = filterProperties.get(format.id)!
-
+                fields.map((field, index) => {
                     return <li className={styles['filter-option']}>
                         {
-                            props && <M3DCheckbox key={format.id} {...props}></M3DCheckbox>
+                            <>
+                                {/*<input type={'checkbox'} key={field.id} {...props.control} {...props.register(`${props.controlName}.${index}.value` as const)}></input>*/}
+                                <M3DCheckbox key={field.id} label={props.filterArray[index].name} format={'small'} control={props.control} name={`${props.controlName}.${index}.value`}></M3DCheckbox>
+                                {/*{props.filterArray[index].name}*/}
+                            </>
                         }
                     </li>
                 })

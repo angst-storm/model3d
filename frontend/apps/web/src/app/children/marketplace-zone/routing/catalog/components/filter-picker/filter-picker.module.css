@@ -1,7 +1,5 @@
 .filter-block {
-    &:not(:last-child) {
-        margin-bottom: var(--s-sp);
-    }
+    margin-bottom: var(--s-sp);
 }
 
 .filter-title {

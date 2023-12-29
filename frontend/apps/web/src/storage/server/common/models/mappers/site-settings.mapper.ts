@@ -63,6 +63,7 @@ export function siteSettingsMapper(data?: ISiteSettingsResponseModel): ISiteSett
                 docLink: data?.contactInformationUrl,
                 downloadName: 'contacts'
             }
-        ]
+        ],
+        receiveDistributionLink: data.receiveDistributionUrl
     }
 }

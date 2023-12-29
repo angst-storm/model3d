@@ -22,10 +22,10 @@ export interface IProductResponseModel {
     description: string,
     publicationDate: string,
     author: number,
-    owners: string[], // ??
     archive: boolean,
     category: ICategoryResponseModel,
     isFree: boolean,
     modelFileSizeBytes: string,
     preview: string,
+    purchaseCount: number
 }

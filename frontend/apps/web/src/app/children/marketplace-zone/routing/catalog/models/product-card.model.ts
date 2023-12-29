@@ -3,5 +3,6 @@ export interface IProductCardModel {
     name: string
     isFree?: boolean
     image?: string
-    favoriteNumber?: number
+    purchaseCount?: number,
+    cost?: number
 }
