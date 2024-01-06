@@ -22,6 +22,14 @@ services:
       - postgres
     volumes:
       - media:/media
+  react:
+    container_name: react
+    build: frontend/apps/web
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+      - django
 volumes:
   postgres-data:
   media:

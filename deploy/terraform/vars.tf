@@ -10,7 +10,11 @@ variable "image_registry" {
   type = string
 }
 
-variable "image_tag" {
+variable "django_tag" {
+  type = string
+}
+
+variable "react_tag" {
   type = string
 }
 

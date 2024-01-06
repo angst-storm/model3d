@@ -37,7 +37,7 @@ services:
       - postgres-data:/var/lib/postgresql/data
   django:
     container_name: django
-    image: ${var.image_registry}:${var.image_tag}
+    image: ${var.image_registry}:${var.django_tag}
     environment:
       SECRET_KEY: ${var.secret_key}
       DEBUG: "True"
@@ -49,13 +49,21 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_SSLMODE: disable
-      VERSION: ${var.image_tag}
+      VERSION: ${var.django_tag}
     ports:
       - "8000:8000"
     depends_on:
       - postgres
     volumes:
       - media:/media
+  react:
+    container_name: react
+    image: ${var.image_registry}:${var.react_tag}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+      - django
 volumes:
   postgres-data:
   media:

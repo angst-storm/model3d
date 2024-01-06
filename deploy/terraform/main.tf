@@ -39,3 +39,28 @@ resource "yandex_dns_recordset" "a_record" {
   ttl     = 600
   data    = [yandex_compute_instance.model3d.network_interface[0].nat_ip_address]
 }
+
+#resource "yandex_cm_certificate" "model3d" {
+#  name    = "model3d"
+#  domains = [var.domain]
+#
+#  managed {
+#    challenge_type = "DNS_CNAME"
+#  }
+#}
+#
+#resource "yandex_dns_recordset" "main_record" {
+#  zone_id = data.yandex_dns_zone.zone.id
+#  name    = "${var.domain}."
+#  type    = "CNAME"
+#  ttl     = 600
+#  data    = [yandex_api_gateway.model3d.domain]
+#}
+#
+#resource "yandex_dns_recordset" "dns_challenge_record" {
+#  zone_id = data.yandex_dns_zone.zone.id
+#  name    = yandex_cm_certificate.model3d.challenges[0].dns_name
+#  type    = "CNAME"
+#  ttl     = 600
+#  data    = [yandex_cm_certificate.model3d.challenges[0].dns_value]
+#}
