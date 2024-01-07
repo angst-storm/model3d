@@ -34,6 +34,320 @@
     }
   },
   {
+    "model": "api.product",
+    "pk": 2,
+    "fields": {
+      "name": "Кровать детская",
+      "cost": 350,
+      "articul": "1234",
+      "render": 1,
+      "style": 1,
+      "form": 2,
+      "platform": "blender",
+      "isPopular": true,
+      "sizeX": 100,
+      "sizeY": 100,
+      "sizeZ": 100,
+      "polygonsCount": 1500,
+      "buyUrl": "",
+      "description": "Модель детской кровати",
+      "publicationDate": "2024-01-21T05:38:39.833Z",
+      "author": 3,
+      "category": 3,
+      "preview": "Кровать_детская_28.jpg",
+      "colors": [
+        2
+      ],
+      "materials": [
+        1,
+        4
+      ],
+      "tags": [
+        4
+      ]
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 3,
+    "fields": {
+      "name": "Высокий комод",
+      "cost": 350,
+      "articul": "1234",
+      "render": 1,
+      "style": 1,
+      "form": 2,
+      "platform": "blender",
+      "isPopular": true,
+      "sizeX": 100,
+      "sizeY": 100,
+      "sizeZ": 100,
+      "polygonsCount": 1500,
+      "buyUrl": "",
+      "description": "Модель высокого комода",
+      "publicationDate": "2024-01-22T09:18:51.350Z",
+      "author": 3,
+      "category": 4,
+      "preview": "Комод_37.jpg",
+      "colors": [
+        2
+      ],
+      "materials": [
+        1
+      ],
+      "tags": [
+        5
+      ]
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 4,
+    "fields": {
+      "name": "Комод детский",
+      "cost": 350,
+      "articul": "1234",
+      "render": 1,
+      "style": 1,
+      "form": 2,
+      "platform": "blender",
+      "isPopular": true,
+      "sizeX": 100,
+      "sizeY": 100,
+      "sizeZ": 100,
+      "polygonsCount": 1500,
+      "buyUrl": "",
+      "description": "Модель детского комода",
+      "publicationDate": "2024-01-22T09:20:02.784Z",
+      "author": 3,
+      "category": 4,
+      "preview": "Комод_детский_2.jpg",
+      "colors": [
+        2
+      ],
+      "materials": [
+        1
+      ],
+      "tags": [
+        4,
+        5
+      ]
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 5,
+    "fields": {
+      "name": "Диван детский",
+      "cost": 400,
+      "articul": "1234",
+      "render": 1,
+      "style": 1,
+      "form": 2,
+      "platform": "blender",
+      "isPopular": true,
+      "sizeX": 100,
+      "sizeY": 100,
+      "sizeZ": 100,
+      "polygonsCount": 2000,
+      "buyUrl": "",
+      "description": "Модель детского дивана",
+      "publicationDate": "2024-01-22T09:21:54.456Z",
+      "author": 3,
+      "category": 2,
+      "preview": "Диван_детский_2.jpg",
+      "colors": [
+        1,
+        2
+      ],
+      "materials": [
+        1,
+        4
+      ],
+      "tags": [
+        4
+      ]
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 6,
+    "fields": {
+      "name": "Кухонные доски",
+      "cost": 150,
+      "articul": "1234",
+      "render": 2,
+      "style": 2,
+      "form": 1,
+      "platform": "blender",
+      "isPopular": false,
+      "sizeX": 20,
+      "sizeY": 20,
+      "sizeZ": 20,
+      "polygonsCount": 500,
+      "buyUrl": "",
+      "description": "Модель кухонных досок",
+      "publicationDate": "2024-01-22T09:28:21.430Z",
+      "author": 6,
+      "category": 18,
+      "preview": "Кухонные_доски_-_чёрная_и_круглая.jpg",
+      "colors": [
+        6,
+        7
+      ],
+      "materials": [
+        1
+      ],
+      "tags": [
+        1,
+        3
+      ]
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 7,
+    "fields": {
+      "name": "Горшок с растением",
+      "cost": 400,
+      "articul": "1234",
+      "render": 2,
+      "style": 4,
+      "form": 1,
+      "platform": "blender",
+      "isPopular": false,
+      "sizeX": 40,
+      "sizeY": 40,
+      "sizeZ": 40,
+      "polygonsCount": 800,
+      "buyUrl": "",
+      "description": "Модель горшка с растением",
+      "publicationDate": "2024-01-22T09:31:21.326Z",
+      "author": 6,
+      "category": 15,
+      "preview": "Горшок_с_растением.jpg",
+      "colors": [
+        8,
+        4,
+        7
+      ],
+      "materials": [
+        6,
+        7
+      ],
+      "tags": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 8,
+    "fields": {
+      "name": "Сливы и груши",
+      "cost": 300,
+      "articul": "1234",
+      "render": 2,
+      "style": 1,
+      "form": 1,
+      "platform": "blender",
+      "isPopular": false,
+      "sizeX": 20,
+      "sizeY": 20,
+      "sizeZ": 20,
+      "polygonsCount": 350,
+      "buyUrl": "",
+      "description": "Модель тарелки со сливами и грушами",
+      "publicationDate": "2024-01-22T09:33:23.764Z",
+      "author": 6,
+      "category": 18,
+      "preview": "Сливы_и_груши_1.jpg",
+      "colors": [
+        8,
+        3,
+        5
+      ],
+      "materials": [
+        8
+      ],
+      "tags": [
+        1,
+        3
+      ]
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 9,
+    "fields": {
+      "name": "Тумба с раковиной",
+      "cost": 350,
+      "articul": "1234",
+      "render": 1,
+      "style": 1,
+      "form": 2,
+      "platform": "blender",
+      "isPopular": false,
+      "sizeX": 100,
+      "sizeY": 100,
+      "sizeZ": 100,
+      "polygonsCount": 3000,
+      "buyUrl": "",
+      "description": "Модель тумбы для ванной",
+      "publicationDate": "2024-01-22T09:36:23.419Z",
+      "author": 3,
+      "category": 19,
+      "preview": "Тумба_129.jpg",
+      "colors": [
+        1,
+        2
+      ],
+      "materials": [
+        8,
+        1,
+        3
+      ],
+      "tags": [
+        5,
+        6
+      ]
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 10,
+    "fields": {
+      "name": "Кружки серые в стопках",
+      "cost": 250,
+      "articul": "1234",
+      "render": 2,
+      "style": 3,
+      "form": 1,
+      "platform": "blender",
+      "isPopular": true,
+      "sizeX": 10,
+      "sizeY": 10,
+      "sizeZ": 10,
+      "polygonsCount": 450,
+      "buyUrl": "",
+      "description": "Модель серых кружек",
+      "publicationDate": "2024-01-22T09:38:02.849Z",
+      "author": 6,
+      "category": 18,
+      "preview": "Кружки_серые_в_стопках.jpg",
+      "colors": [
+        7
+      ],
+      "materials": [
+        8
+      ],
+      "tags": [
+        1,
+        3
+      ]
+    }
+  },
+  {
     "model": "api.productfile",
     "pk": 1,
     "fields": {
@@ -52,11 +366,92 @@
     }
   },
   {
+    "model": "api.productfile",
+    "pk": 3,
+    "fields": {
+      "product": 5,
+      "format": 3,
+      "file": "Кровать_детская_28.c3d"
+    }
+  },
+  {
+    "model": "api.productfile",
+    "pk": 4,
+    "fields": {
+      "product": 6,
+      "format": 3,
+      "file": "Комод_37.c3d"
+    }
+  },
+  {
+    "model": "api.productfile",
+    "pk": 5,
+    "fields": {
+      "product": 7,
+      "format": 3,
+      "file": "Комод_детский_2.c3d"
+    }
+  },
+  {
+    "model": "api.productfile",
+    "pk": 6,
+    "fields": {
+      "product": 8,
+      "format": 3,
+      "file": "Диван_детский_2.c3d"
+    }
+  },
+  {
+    "model": "api.productfile",
+    "pk": 7,
+    "fields": {
+      "product": 9,
+      "format": 3,
+      "file": "Кухонные_доски_-_чёрная_и_круглая.c3d"
+    }
+  },
+  {
+    "model": "api.productfile",
+    "pk": 8,
+    "fields": {
+      "product": 10,
+      "format": 3,
+      "file": "Горшок_с_растением.c3d"
+    }
+  },
+  {
+    "model": "api.productfile",
+    "pk": 9,
+    "fields": {
+      "product": 11,
+      "format": 3,
+      "file": "Сливы_1.c3d"
+    }
+  },
+  {
+    "model": "api.productfile",
+    "pk": 10,
+    "fields": {
+      "product": 12,
+      "format": 3,
+      "file": "Тумба_129.c3d"
+    }
+  },
+  {
+    "model": "api.productfile",
+    "pk": 11,
+    "fields": {
+      "product": 13,
+      "format": 3,
+      "file": "Кружки_серые_в_стопках.c3d"
+    }
+  },
+  {
     "model": "api.purchase",
     "pk": 1,
     "fields": {
       "product": 1,
-      "purchaser": 1,
+      "purchaser": 3,
       "date": "2024-01-21T08:10:05.215Z",
       "amount": 1000
     }
@@ -69,6 +464,66 @@
       "purchaser": 2,
       "date": "2024-01-21T08:10:05.215Z",
       "amount": 1000
+    }
+  },
+  {
+    "model": "api.purchase",
+    "pk": 3,
+    "fields": {
+      "product": 10,
+      "purchaser": 3,
+      "date": "2024-01-22T09:39:00.859Z",
+      "amount": 350
+    }
+  },
+  {
+    "model": "api.purchase",
+    "pk": 4,
+    "fields": {
+      "product": 5,
+      "purchaser": 4,
+      "date": "2024-01-22T09:39:12.062Z",
+      "amount": 600
+    }
+  },
+  {
+    "model": "api.purchase",
+    "pk": 5,
+    "fields": {
+      "product": 6,
+      "purchaser": 4,
+      "date": "2024-01-22T09:39:25.111Z",
+      "amount": 100
+    }
+  },
+  {
+    "model": "api.purchase",
+    "pk": 6,
+    "fields": {
+      "product": 2,
+      "purchaser": 5,
+      "date": "2024-01-22T09:39:52.934Z",
+      "amount": 350
+    }
+  },
+  {
+    "model": "api.purchase",
+    "pk": 7,
+    "fields": {
+      "product": 2,
+      "purchaser": 2,
+      "date": "2024-01-22T09:40:04.527Z",
+      "amount": 350
+    }
+  },
+  {
+    "model": "api.purchase",
+    "pk": 8,
+    "fields": {
+      "product": 2,
+      "purchaser": 4,
+      "date": "2024-01-22T09:40:14.690Z",
+      "amount": 350
     }
   }
 ]
