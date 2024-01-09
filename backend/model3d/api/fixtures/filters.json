@@ -40,6 +40,30 @@
     }
   },
   {
+    "model": "api.color",
+    "pk": 6,
+    "fields": {
+      "name": "Коричневый",
+      "rgb": "#79553D"
+    }
+  },
+  {
+    "model": "api.color",
+    "pk": 7,
+    "fields": {
+      "name": "Серый",
+      "rgb": "#808080"
+    }
+  },
+  {
+    "model": "api.color",
+    "pk": 8,
+    "fields": {
+      "name": "Желтый",
+      "rgb": "#FFFF00"
+    }
+  },
+  {
     "model": "api.productform",
     "pk": 1,
     "fields": {
@@ -180,6 +204,27 @@
     }
   },
   {
+    "model": "api.material",
+    "pk": 6,
+    "fields": {
+      "name": "Камень"
+    }
+  },
+  {
+    "model": "api.material",
+    "pk": 7,
+    "fields": {
+      "name": "Растение"
+    }
+  },
+  {
+    "model": "api.material",
+    "pk": 8,
+    "fields": {
+      "name": "Керамика"
+    }
+  },
+  {
     "model": "api.render",
     "pk": 1,
     "fields": {
@@ -233,6 +278,13 @@
     "pk": 5,
     "fields": {
       "name": "хранение"
+    }
+  },
+  {
+    "model": "api.tag",
+    "pk": 6,
+    "fields": {
+      "name": "ванная"
     }
   }
 ]

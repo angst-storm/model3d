@@ -4,7 +4,7 @@
     "pk": 1,
     "fields": {
       "name": "Диван \"Улитка\"",
-      "cost": 1000,
+      "cost": 500,
       "articul": "7680",
       "render": 1,
       "style": 4,
@@ -189,7 +189,7 @@
       "description": "Модель кухонных досок",
       "publicationDate": "2024-01-22T09:28:21.430Z",
       "author": 6,
-      "category": 18,
+      "category": 17,
       "preview": "Кухонные_доски_-_чёрная_и_круглая.jpg",
       "colors": [
         6,
@@ -260,7 +260,7 @@
       "description": "Модель тарелки со сливами и грушами",
       "publicationDate": "2024-01-22T09:33:23.764Z",
       "author": 6,
-      "category": 18,
+      "category": 17,
       "preview": "Сливы_и_груши_1.jpg",
       "colors": [
         8,
@@ -296,7 +296,7 @@
       "description": "Модель тумбы для ванной",
       "publicationDate": "2024-01-22T09:36:23.419Z",
       "author": 3,
-      "category": 19,
+      "category": 18,
       "preview": "Тумба_129.jpg",
       "colors": [
         1,
@@ -333,7 +333,7 @@
       "description": "Модель серых кружек",
       "publicationDate": "2024-01-22T09:38:02.849Z",
       "author": 6,
-      "category": 18,
+      "category": 17,
       "preview": "Кружки_серые_в_стопках.jpg",
       "colors": [
         7
@@ -369,7 +369,7 @@
     "model": "api.productfile",
     "pk": 3,
     "fields": {
-      "product": 5,
+      "product": 2,
       "format": 3,
       "file": "Кровать_детская_28.c3d"
     }
@@ -378,7 +378,7 @@
     "model": "api.productfile",
     "pk": 4,
     "fields": {
-      "product": 6,
+      "product": 3,
       "format": 3,
       "file": "Комод_37.c3d"
     }
@@ -387,7 +387,7 @@
     "model": "api.productfile",
     "pk": 5,
     "fields": {
-      "product": 7,
+      "product": 4,
       "format": 3,
       "file": "Комод_детский_2.c3d"
     }
@@ -396,7 +396,7 @@
     "model": "api.productfile",
     "pk": 6,
     "fields": {
-      "product": 8,
+      "product": 5,
       "format": 3,
       "file": "Диван_детский_2.c3d"
     }
@@ -405,7 +405,7 @@
     "model": "api.productfile",
     "pk": 7,
     "fields": {
-      "product": 9,
+      "product": 6,
       "format": 3,
       "file": "Кухонные_доски_-_чёрная_и_круглая.c3d"
     }
@@ -414,7 +414,7 @@
     "model": "api.productfile",
     "pk": 8,
     "fields": {
-      "product": 10,
+      "product": 7,
       "format": 3,
       "file": "Горшок_с_растением.c3d"
     }
@@ -423,7 +423,7 @@
     "model": "api.productfile",
     "pk": 9,
     "fields": {
-      "product": 11,
+      "product": 8,
       "format": 3,
       "file": "Сливы_1.c3d"
     }
@@ -432,7 +432,7 @@
     "model": "api.productfile",
     "pk": 10,
     "fields": {
-      "product": 12,
+      "product": 9,
       "format": 3,
       "file": "Тумба_129.c3d"
     }
@@ -441,7 +441,7 @@
     "model": "api.productfile",
     "pk": 11,
     "fields": {
-      "product": 13,
+      "product": 10,
       "format": 3,
       "file": "Кружки_серые_в_стопках.c3d"
     }

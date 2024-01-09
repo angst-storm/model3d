@@ -158,5 +158,25 @@
       "numchild": 0,
       "name": "Текстуры"
     }
+  },
+  {
+    "model": "api.category",
+    "pk": 17,
+    "fields": {
+      "path": "0006",
+      "depth": 1,
+      "numchild": 0,
+      "name": "Декор"
+    }
+  },
+  {
+    "model": "api.category",
+    "pk": 18,
+    "fields": {
+      "path": "00020005",
+      "depth": 2,
+      "numchild": 0,
+      "name": "Мебель в ванную"
+    }
   }
 ]

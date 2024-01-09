@@ -61,9 +61,6 @@ services:
     image: ${var.image_registry}:${var.react_tag}
     ports:
       - "3000:3000"
-    depends_on:
-      - postgres
-      - django
 volumes:
   postgres-data:
   media:
