@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+      "baseUrl": ".",
+      "paths": {
+          "@model3d/controls": ["./src/libs/m3d-ui-controls/lib/index.ts"],
+          "@model3d/styles": ["./src/libs/styles/index.scss"],
+          "@model3d/utils": ["./src/libs/utils/index.ts"],
+          "@model3d/constants": ["./src/constants/index.ts"],
+          "@assets": ["./src/assets"],
+          "@storage": ["./src/storage/"]
+      }
+  },
+  "include": [
+    "src"
+  ]
+}

@@ -1,0 +1,81 @@
+@import "src/libs/styles";
+
+.input-outer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: row;
+
+  border-radius: 4px;
+  min-width: 360px;
+  padding: $xs-sp 0 $xs-sp $m-sp;
+  border: 1px solid $outline;
+  position: relative;
+  @include M3-r-l();
+
+  &[data-is-valid = false] {
+    border: 1px solid $error;
+  }
+}
+
+.input-value-accessor {
+  display: block;
+  width: 100%;
+
+  font: inherit;
+  outline: none;
+  border: none;
+  min-height: 48px;
+  color: $text-primary;
+  padding: 0;
+}
+
+.label {
+  color: $text-secondary;
+  position: absolute;
+
+  font: inherit;
+  transition: transform 200ms;
+  transform-origin: top left;
+  pointer-events: none;
+  line-height: 1;
+  display: block;
+
+  &.filled {
+    transform: translate(0, -1em) scale(0.8);
+  }
+
+  &.empty {
+    transform: translate(0, 0.5em) scale(1);
+  }
+
+  &[data-is-valid = false] {
+    color: $error;
+  }
+}
+
+.supporting-text {
+  padding: 10px 12px;
+}
+
+.trailing-icon {
+  padding: $s-sp;
+  margin: $xs-sp;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.validation-message {
+  align-self: start;
+  margin: 0;
+  padding: $xs-sp $m-sp 0;
+  @include M3-r-s();
+  color: $error;
+}

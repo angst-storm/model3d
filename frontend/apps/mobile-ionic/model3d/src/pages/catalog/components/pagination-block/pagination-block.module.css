@@ -1,0 +1,59 @@
+.pagination-block {
+    display: flex;
+    flex-direction: row;
+    padding: var(--m-sp) 0;
+    margin-top: var(--lss-sp);
+    align-items: center;
+}
+
+.on-page-count-block {
+    display: flex;
+    flex-direction: row;
+    gap: var(--s-sp);
+
+    color: var(--text-secondary);
+}
+
+.on-page-count-number {
+    height: 24px;
+    padding: 0 var(--xs-sp);
+    cursor: pointer;
+
+    &[data-active = true] {
+        color: var(--primary);
+    }
+}
+
+.product-count-block {
+    margin-bottom: var(--s-sp);
+    color: var(--text-secondary);
+}
+
+.pages-block {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+}
+
+.pagination-arrow {
+    width: 24px;
+    height: 24px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.pagination-number {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: var(--text-secondary);
+
+    &[data-active = true] {
+        color: var(--primary);
+    }
+}

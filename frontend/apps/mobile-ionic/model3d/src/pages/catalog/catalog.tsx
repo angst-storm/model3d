@@ -6,7 +6,8 @@ import {useLazyProductsQuery} from "@storage";
 import {ProductTable} from "./components/product-table/product-table";
 import {PaginationBlock} from "./components/pagination-block/pagination-block";
 import {IFiltersValueModel} from "./models/filters-value.model";
-import {IProductListParamsModel} from "../../../../../storage/server/product/models/params/product-list.params-model";
+import {IProductListParamsModel} from "../../storage/server/product/models/params/product-list.params-model";
+import React from "react";
 
 export function Catalog() {
     const searchBarSettings: IM3dSearchBarProps = {
@@ -124,17 +125,15 @@ export function Catalog() {
         reFetchProducts()
     }, []);
 
-    return <div className={'grid-container'}>
-        <div className={'catalog grid-element'}>
+    return <div className={'catalog'}>
             <M3dSearchBar className={'main-search-bar'} {...searchBarSettings}></M3dSearchBar>
-            <M3dButton className={'model-load-button'} type={'outlined'}>
-                Загрузить модель
-            </M3dButton>
-            <FilterBlock className={'filter-block'} onFiltersApply={filterProducts}></FilterBlock>
+            {/*<M3dButton className={'model-load-button'} type={'outlined'}>*/}
+            {/*    Загрузить модель*/}
+            {/*</M3dButton>*/}
+            {/*<FilterBlock className={'filter-block'} onFiltersApply={filterProducts}></FilterBlock>*/}
             <div className={'product-table-block'}>
                 <ProductTable products={productsResult.currentData?.results ?? []}></ProductTable>
                 <PaginationBlock className={'pagination-row'} pageCount={2} onPageChange={getNewPage}></PaginationBlock>
             </div>
         </div>
-    </div>
 }
