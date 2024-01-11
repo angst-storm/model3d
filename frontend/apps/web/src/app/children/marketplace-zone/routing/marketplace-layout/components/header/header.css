@@ -18,6 +18,8 @@
 
 .ceramic-logo {
     margin-right: var(--lxs-sp);
+    margin-bottom: 6px;
+    margin-top: 6px;
     cursor: pointer;
 }
 

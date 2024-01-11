@@ -27,7 +27,7 @@ export function FilterPicker(props: IFilterPickerProps) {
             append({ value: false, id: value.id })
         });
 
-    }, [props]);
+    }, []);
 
 
     return <div className={styles['filter-block']}>
