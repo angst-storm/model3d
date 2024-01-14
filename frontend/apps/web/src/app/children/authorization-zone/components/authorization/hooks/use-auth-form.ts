@@ -2,24 +2,28 @@ import {object, string} from "yup";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {IM3DInputControlProps} from "@model3d/controls";
-import {useSelector} from "react-redux";
 import {IAuthorizationForm} from "../models/authorization-form.model";
 import {useNavigate} from "react-router-dom";
+import {passwordRegExp} from "@model3d/utils";
+import {ValidationText} from "@model3d/constants";
+import {
+    IM3DPasswordControlProps
+} from "@model3d/controls";
 
 
 export function useAuthForm() {
+    const navigate = useNavigate();
+
     const validationSchema = object({
         email: string()
-            .required('Необходимо заполнить')
-            .email('Введен некорректный email'),
+            .required(ValidationText.inputRequired)
+            .email(ValidationText.emailMatch),
         password: string()
-            .required('Необходимо заполнить')
-            .min(6, 'Слишком маленькая длина пароля')
-            .max(20, 'Слишком большая длина пароля')
-            .matches(/^[a-zA-Z\s]+$/, { message: 'Пароль должен содержать [то что он должен содержать]' })
+            .required(ValidationText.inputRequired)
+            .min(6, ValidationText.shortPass)
+            .max(20, ValidationText.longPass)
+            .matches(passwordRegExp(), { message: ValidationText.passMatch }),
     })
-
-    const navigate = useNavigate();
 
     const formOutput = useForm<IAuthorizationForm>({
         defaultValues: {
@@ -36,7 +40,7 @@ export function useAuthForm() {
         name: 'email'
     }
 
-    const passwordControlOptions: IM3DInputControlProps = {
+    const passwordControlOptions: IM3DPasswordControlProps = {
         label: 'Пароль',
         control: formOutput.control,
         name: 'password',
@@ -45,17 +49,8 @@ export function useAuthForm() {
             action: () => {
                 navigate('/password-recovery', {relative: 'route'})
             }
-        },
-        trailingIcon: {
-            iconName: 'eye-crossed',
-            action: () => {
-
-            }
-        },
-        maskValue: true
+        }
     }
-
-    const au = useSelector((state: {authorized: any}) => state.authorized.value)
 
     return {
         controlParams: {

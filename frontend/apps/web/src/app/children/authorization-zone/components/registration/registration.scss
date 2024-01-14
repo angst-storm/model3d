@@ -1,0 +1,24 @@
+@import "src/libs/styles";
+
+.registration-form {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__additional-button {
+    margin-top: $s-sp;
+  }
+
+  &__agreement-text {
+    @include M3-r-s();
+    text-align: center;
+  }
+}
+
+.modal {
+  &__footer {
+    margin-top: $l-sp;
+  }
+}
