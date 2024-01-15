@@ -31,5 +31,6 @@ export interface IProductCardModel {
     author?: number,
     archive?: boolean,
     category?: ICategoryResponseModel,
-    modelFileSizeBytes?: string
+    modelFileSizeBytes?: string,
+    files?: { format: IFilterBaseResponseModel, file: string }[]
 }

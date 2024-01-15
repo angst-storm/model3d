@@ -88,7 +88,7 @@ export function PaginationBlock(props: IPaginationBlockProps) {
     return <div className={`${props.className} ${styles['pagination-block']}`}>
         <div className={`${styles['ddd']} M3-body-m`}>
             <div className={styles['product-count-block']}>
-                Модели {1}-{30} из {2348324}
+                Модели {1}-{30} из {40}
             </div>
             <div className={styles['on-page-count-block']}>
                 На странице

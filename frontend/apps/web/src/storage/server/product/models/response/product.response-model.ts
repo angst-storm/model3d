@@ -27,5 +27,7 @@ export interface IProductResponseModel {
     isFree: boolean,
     modelFileSizeBytes: string,
     preview: string,
-    purchaseCount: number
+    purchaseCount: number,
+    files?: { format: IFilterBaseResponseModel, file: string }[],
+    rating: number
 }
