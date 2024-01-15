@@ -17,7 +17,8 @@
       "user": 1,
       "checkMark": true,
       "receiveDistribution": true,
-      "image": "serez.jpg"
+      "image": "serez.jpg",
+      "rating": 4.5
     }
   },
   {
@@ -59,7 +60,8 @@
       "user": 3,
       "checkMark": false,
       "receiveDistribution": false,
-      "image": null
+      "image": null,
+      "rating": 4.8
     }
   },
   {
@@ -122,7 +124,8 @@
       "user": 6,
       "checkMark": false,
       "receiveDistribution": false,
-      "image": null
+      "image": null,
+      "rating": 5
     }
   }
 ]

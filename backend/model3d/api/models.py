@@ -199,10 +199,11 @@ class ProductFile(models.Model):
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    checkMark = models.BooleanField(default=False)
-    receiveDistribution = models.BooleanField(default=False)
-    image = models.ImageField(null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Пользователь')
+    checkMark = models.BooleanField(default=False, verbose_name='Галочка')
+    receiveDistribution = models.BooleanField(default=False, verbose_name='Получать рассылку')
+    image = models.ImageField(null=True, verbose_name='Аватар')
+    rating = models.FloatField(default=4.0, verbose_name='Рейтинг')
 
     @property
     def productsCount(self):

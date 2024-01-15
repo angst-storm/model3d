@@ -278,6 +278,7 @@ class UserSerializer(serializers.ModelSerializer):
     checkMark = serializers.BooleanField(source='userprofile.checkMark')
     image = serializers.ImageField(source='userprofile.image')
     productsCount = serializers.IntegerField(source='userprofile.productsCount')
+    rating = serializers.FloatField(source='userprofile.rating')
 
     class Meta:
         model = User
@@ -287,7 +288,8 @@ class UserSerializer(serializers.ModelSerializer):
             'email',
             'checkMark',
             'image',
-            'productsCount'
+            'productsCount',
+            'rating'
         ]
 
 
