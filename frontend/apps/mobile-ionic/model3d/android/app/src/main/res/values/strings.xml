@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">model3d</string>
+    <string name="title_activity_main">model3d</string>
+    <string name="package_name">ru.ceramic3d.app</string>
+    <string name="custom_url_scheme">ru.ceramic3d.app</string>
+</resources>
