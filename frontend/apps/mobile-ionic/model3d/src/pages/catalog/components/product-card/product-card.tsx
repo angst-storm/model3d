@@ -20,7 +20,7 @@ export function ProductCard(props: IProductCardProps) {
     }, [])
 
     function toDetails() {
-        history.push(`/product/${props.productCardModel.id}`)
+        history.push(`product/${props.productCardModel.id}`)
     }
 
     return <div className={'card-layout'}>

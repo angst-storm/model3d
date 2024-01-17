@@ -2,8 +2,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--lxs-sp) var(--lss-sp);
-    margin-top: var(--l-sp);
-    margin-bottom: var(--xls-sp);
+    margin: 24px 16px;
 }
 
 .main-search-bar {

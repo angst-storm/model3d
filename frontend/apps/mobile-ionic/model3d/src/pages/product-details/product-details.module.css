@@ -1,0 +1,155 @@
+.product-details {
+    margin: 24px 16px;
+}
+
+.characteristics-block {
+    padding: var(--lss-sp);
+    background-color: var(--white);
+    border-radius: 16px;
+    margin-bottom: var(--m-sp);
+}
+
+.title-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+
+    margin-bottom: var(--lss-sp);
+}
+
+.title {
+    margin-right: auto;
+}
+
+.purchase-count {
+    margin-left: var(--xs-sp);
+}
+
+.image-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.active-image {
+    width: 100%;
+}
+
+.gallery {
+    min-height: 128px;
+    width: 100%;
+    margin-top: var(--lxs-sp);
+}
+
+.gallery-image {
+    max-width: 128px;
+    cursor: pointer;
+}
+
+.characteristics {
+    margin-top: var(--lss-sp);
+}
+
+.characteristics-title {
+    margin-bottom: var(--lss-sp);
+}
+
+.characteristics-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.characteristics-element {
+    margin-bottom: 10px;
+}
+
+.author-block {
+    padding: var(--m-sp) var(--lss-sp);
+    background-color: var(--white);
+    border-radius: 20px;
+    height: min-content;
+
+    display: flex;
+    flex-direction: row;
+
+    margin-bottom: var(--m-sp);
+}
+
+.author-avatar{
+    width: 40px;
+    height: 40px;
+    margin-right: 8px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.author-name {
+    color: var(--text-primary)
+}
+
+.author-star-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: fill;
+    margin-right: var(--xss-sp);
+}
+
+.author-star-value {
+    color: var(--text-secondary)
+}
+
+.author-responses {
+    color: var(--text-secondary);
+    margin-left: 10px;
+}
+
+.author-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.buy-block {
+    padding: var(--lss-sp);
+    background-color: var(--white);
+    border-radius: 20px;
+    height: min-content;
+}
+
+.price-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+
+}
+
+.price-label {
+    max-width: min-content;
+    border-radius: 100px;
+    padding: var(--xss-sp) var(--s-sp);
+
+    &[data-free = true] {
+        color: var(--text-secondary);
+        background-color: var(--surface-variant);
+    }
+
+    &[data-free = false] {
+        color: var(--white);
+        background-color: var(--on-primary-container);
+    }
+}
+
+.buy-button {
+    margin-top: var(--m-sp);
+    width: 100%;
+}
+
+.viewer {
+    width: 100%;
+    height: 632px;
+}

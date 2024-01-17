@@ -1,5 +1,6 @@
 import {IProductResponseModel} from "../response/product.response-model";
 import {IProductCardModel} from "../../../../../pages/catalog/models/product-card.model";
+import {IFilterBaseResponseModel} from "../response/filter-base.response-model";
 
 export function productModelMapper(data: IProductResponseModel): IProductCardModel {
     return {
@@ -27,5 +28,6 @@ export function productModelMapper(data: IProductResponseModel): IProductCardMod
         archive: data.archive,
         category: data.category,
         modelFileSizeBytes: data.modelFileSizeBytes,
+        files: data.files
     }
 }

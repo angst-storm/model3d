@@ -8,30 +8,28 @@
 }
 
 .product-image {
-    min-width: 152px;
-    height: 152px;
-    width: 152px;
     object-fit: scale-down;
     cursor: pointer;
+    max-width: 100%;
 }
 
 .product-name {
     margin: var(--m-sp) auto 0 auto;
+    padding: 0 8px;
     width: 100%;
     cursor: pointer;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 136px;
 }
 
 .card-details {
     margin: var(--m-sp) auto 0 auto;
+    padding: 0 8px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     width: 100%;
-    max-width: 136px;
 }
 
 .cost-label {

@@ -21,7 +21,6 @@ export function ProductDetails() {
 
     const [characteristicsList, setCharacteristicsList] = useState([] as string[])
     const [model, setModel] = useState<string | undefined>()
-    // const [modelLoading, setModelLoading] = useState(true)
 
     let viewer: OV.EmbeddedViewer;
     const viewerRef = useRef<HTMLDivElement>(null)
