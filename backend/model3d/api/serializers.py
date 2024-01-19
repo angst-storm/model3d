@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from rest_framework import serializers
 
 from .models import *
@@ -32,3 +33,27 @@ class SiteSettingsSerializer(serializers.ModelSerializer):
             'footerUrls',
             'socialMedias'
         ]
+
+
+class RegDataSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField()
+    password = serializers.CharField()
+
+    class Meta:
+        model = User
+        fields = [
+            'email',
+            'password'
+        ]
+
+    def create(self, validated_data):
+        return User.objects.create_user(username=validated_data['email'], password=validated_data['password'])
+
+
+class AuthDataSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    password = serializers.CharField()
+
+
+class EmailSerializer(serializers.Serializer):
+    email = serializers.EmailField(max_length=254)
