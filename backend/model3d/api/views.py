@@ -1,17 +1,19 @@
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
+from django.utils.decorators import method_decorator
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status, exceptions
 from rest_framework.decorators import action, authentication_classes
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
-from rest_framework.viewsets import GenericViewSet
+from rest_framework.viewsets import GenericViewSet, ReadOnlyModelViewSet
 
 from .auth import JWTAuthentication, add_auth
-from .models import SiteSettings
-from .serializers import SiteSettingsSerializer, RegDataSerializer, AuthDataSerializer, EmailSerializer
+from .models import SiteSettings, Product
+from .serializers import SiteSettingsSerializer, RegDataSerializer, AuthDataSerializer, EmailSerializer, \
+    ProductSerializer
 
 
 @authentication_classes([])
@@ -120,3 +122,23 @@ class AuthenticationView(GenericViewSet):
         except exceptions.AuthenticationFailed:
             pass
         return Response({'authenticated': result}, status=status.HTTP_200_OK)
+
+
+@method_decorator(name='list', decorator=swagger_auto_schema(
+    tags=['Продукты'],
+    operation_summary='Все продукты',
+    responses={
+        401: "Пользователь не аутентифицирован",
+        403: "Пользователь не авторизован",
+    }))
+@method_decorator(name='retrieve', decorator=swagger_auto_schema(
+    tags=['Продукты'],
+    operation_summary='Продукт по его ID',
+    responses={
+        401: "Пользователь не аутентифицирован",
+        403: "Пользователь не авторизован",
+        404: "Продукт не найден"
+    }))
+class ProductView(ReadOnlyModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
