@@ -1,0 +1,162 @@
+[
+  {
+    "model": "api.category",
+    "pk": 1,
+    "fields": {
+      "path": "0001",
+      "depth": 1,
+      "numchild": 5,
+      "name": "Мебель"
+    }
+  },
+  {
+    "model": "api.category",
+    "pk": 2,
+    "fields": {
+      "path": "00010005",
+      "depth": 2,
+      "numchild": 0,
+      "name": "Диваны"
+    }
+  },
+  {
+    "model": "api.category",
+    "pk": 3,
+    "fields": {
+      "path": "00010004",
+      "depth": 2,
+      "numchild": 0,
+      "name": "Кровати"
+    }
+  },
+  {
+    "model": "api.category",
+    "pk": 4,
+    "fields": {
+      "path": "00010003",
+      "depth": 2,
+      "numchild": 0,
+      "name": "Шкафы"
+    }
+  },
+  {
+    "model": "api.category",
+    "pk": 5,
+    "fields": {
+      "path": "00010002",
+      "depth": 2,
+      "numchild": 0,
+      "name": "Столы"
+    }
+  },
+  {
+    "model": "api.category",
+    "pk": 6,
+    "fields": {
+      "path": "00010001",
+      "depth": 2,
+      "numchild": 0,
+      "name": "Стулья"
+    }
+  },
+  {
+    "model": "api.category",
+    "pk": 7,
+    "fields": {
+      "path": "0002",
+      "depth": 1,
+      "numchild": 3,
+      "name": "Санузел"
+    }
+  },
+  {
+    "model": "api.category",
+    "pk": 8,
+    "fields": {
+      "path": "00020004",
+      "depth": 2,
+      "numchild": 0,
+      "name": "Унитаз и биде"
+    }
+  },
+  {
+    "model": "api.category",
+    "pk": 9,
+    "fields": {
+      "path": "00020002",
+      "depth": 2,
+      "numchild": 0,
+      "name": "Ванны"
+    }
+  },
+  {
+    "model": "api.category",
+    "pk": 10,
+    "fields": {
+      "path": "00020001",
+      "depth": 2,
+      "numchild": 0,
+      "name": "Умывальники"
+    }
+  },
+  {
+    "model": "api.category",
+    "pk": 11,
+    "fields": {
+      "path": "0003",
+      "depth": 1,
+      "numchild": 3,
+      "name": "Техника"
+    }
+  },
+  {
+    "model": "api.category",
+    "pk": 12,
+    "fields": {
+      "path": "00030003",
+      "depth": 2,
+      "numchild": 0,
+      "name": "Бытовая техника"
+    }
+  },
+  {
+    "model": "api.category",
+    "pk": 13,
+    "fields": {
+      "path": "00030002",
+      "depth": 2,
+      "numchild": 0,
+      "name": "Компьютеры"
+    }
+  },
+  {
+    "model": "api.category",
+    "pk": 14,
+    "fields": {
+      "path": "00030001",
+      "depth": 2,
+      "numchild": 0,
+      "name": "Телевизоры"
+    }
+  },
+  {
+    "model": "api.category",
+    "pk": 15,
+    "fields": {
+      "path": "0004",
+      "depth": 1,
+      "numchild": 0,
+      "name": "Растения"
+    }
+  },
+  {
+    "model": "api.category",
+    "pk": 16,
+    "fields": {
+      "path": "0005",
+      "depth": 1,
+      "numchild": 0,
+      "name": "Текстуры"
+    }
+  }
+]
