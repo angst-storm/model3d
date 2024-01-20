@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'drf_yasg',
     'solo',
     'colorfield',
-    'treebeard'
+    'treebeard',
+    'django_filters'
 ]
 
 MIDDLEWARE = [

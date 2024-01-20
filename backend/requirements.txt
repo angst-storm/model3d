@@ -1,11 +1,12 @@
 Django==5.0.1
-django-solo==2.2.0
 djangorestframework==3.14.0
-python-dotenv==1.0.0
-django-cors-headers==4.3.1
 drf-yasg==1.21.7
+django-solo==2.2.0
+django-cors-headers==4.3.1
+django-colorfield==0.11.0
+django-treebeard==4.7
+django-filter==23.5
+python-dotenv==1.0.0
 psycopg2==2.9.9
 pillow==10.2.0
 PyJWT==2.8.0
-django-colorfield==0.11.0
-django-treebeard==4.7

@@ -1,19 +1,19 @@
 from django.contrib.auth import authenticate
-from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from django.utils.decorators import method_decorator
+from django_filters.rest_framework import DjangoFilterBackend
 from drf_yasg.utils import swagger_auto_schema
-from rest_framework import status, exceptions
-from rest_framework.decorators import action, authentication_classes
-from rest_framework.decorators import permission_classes
+from rest_framework import status, exceptions, mixins
+from rest_framework.decorators import action, authentication_classes, permission_classes
+from rest_framework.filters import SearchFilter
+from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet, ReadOnlyModelViewSet
 
 from .auth import JWTAuthentication, add_auth
-from .models import SiteSettings, Product
-from .serializers import SiteSettingsSerializer, RegDataSerializer, AuthDataSerializer, EmailSerializer, \
-    ProductSerializer
+from .filters import ProductFilter
+from .serializers import *
 
 
 @authentication_classes([])
@@ -126,19 +126,90 @@ class AuthenticationView(GenericViewSet):
 
 @method_decorator(name='list', decorator=swagger_auto_schema(
     tags=['Продукты'],
-    operation_summary='Все продукты',
-    responses={
-        401: "Пользователь не аутентифицирован",
-        403: "Пользователь не авторизован",
-    }))
+    operation_summary='Все продукты'))
 @method_decorator(name='retrieve', decorator=swagger_auto_schema(
     tags=['Продукты'],
     operation_summary='Продукт по его ID',
     responses={
-        401: "Пользователь не аутентифицирован",
-        403: "Пользователь не авторизован",
         404: "Продукт не найден"
     }))
+@permission_classes([AllowAny])
 class ProductView(ReadOnlyModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter]
+    search_fields = ['$name', '=articul']
+    filterset_class = ProductFilter
+    pagination_class = LimitOffsetPagination
+
+
+@method_decorator(name='list', decorator=swagger_auto_schema(
+    tags=['Фильтры'],
+    operation_summary='Все расширения'))
+@permission_classes([AllowAny])
+class FormatView(GenericViewSet, mixins.ListModelMixin):
+    queryset = Format.objects.all()
+    serializer_class = FormatSerializer
+
+
+@method_decorator(name='list', decorator=swagger_auto_schema(
+    tags=['Фильтры'],
+    operation_summary='Все рендеры'))
+@permission_classes([AllowAny])
+class RenderView(GenericViewSet, mixins.ListModelMixin):
+    queryset = Render.objects.all()
+    serializer_class = RenderSerializer
+
+
+@method_decorator(name='list', decorator=swagger_auto_schema(
+    tags=['Фильтры'],
+    operation_summary='Все стили'))
+@permission_classes([AllowAny])
+class StyleView(GenericViewSet, mixins.ListModelMixin):
+    queryset = Style.objects.all()
+    serializer_class = StyleSerializer
+
+
+@method_decorator(name='list', decorator=swagger_auto_schema(
+    tags=['Фильтры'],
+    operation_summary='Все цвета'))
+@permission_classes([AllowAny])
+class ColorView(GenericViewSet, mixins.ListModelMixin):
+    queryset = Color.objects.all()
+    serializer_class = ColorSerializer
+
+
+@method_decorator(name='list', decorator=swagger_auto_schema(
+    tags=['Фильтры'],
+    operation_summary='Все материалы'))
+@permission_classes([AllowAny])
+class MaterialView(GenericViewSet, mixins.ListModelMixin):
+    queryset = Material.objects.all()
+    serializer_class = MaterialSerializer
+
+
+@method_decorator(name='list', decorator=swagger_auto_schema(
+    tags=['Фильтры'],
+    operation_summary='Все формы'))
+@permission_classes([AllowAny])
+class ProductFormView(GenericViewSet, mixins.ListModelMixin):
+    queryset = ProductForm.objects.all()
+    serializer_class = ProductFormSerializer
+
+
+@method_decorator(name='list', decorator=swagger_auto_schema(
+    tags=['Фильтры'],
+    operation_summary='Все теги'))
+@permission_classes([AllowAny])
+class TagView(GenericViewSet, mixins.ListModelMixin):
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
+
+
+@method_decorator(name='list', decorator=swagger_auto_schema(
+    tags=['Фильтры'],
+    operation_summary='Лес деревьев категорий'))
+@permission_classes([AllowAny])
+class CategoryTreeView(GenericViewSet, mixins.ListModelMixin):
+    queryset = Category.get_root_nodes()
+    serializer_class = TreeCategorySerializer
