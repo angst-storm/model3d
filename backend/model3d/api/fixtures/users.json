@@ -1,0 +1,62 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "username": "serez@mail.com",
+      "password": "pbkdf2_sha256$720000$VQY1t8boSrD6SNcomVCk2K$R6P8hgT5sN/Xtf0k6Yi9hY4SJ0WxJJboRDhD1ZPlBnQ=",
+      "is_superuser": true,
+      "is_staff": true
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "username": "seva@mail.com",
+      "password": "pbkdf2_sha256$720000$nnvdOqRwGLuWVDsV8U8EBJ$OMIYkH7zu35LhDeIUz487D2HhhWqJP9hCdefF9HeKjQ=",
+      "is_superuser": true,
+      "is_staff": true
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "username": "anya@mail.com",
+      "password": "pbkdf2_sha256$720000$TLx2KmT9A9D9JVUekskDah$ms8zTyVzyJOmiGzd82C3HlVT68QiGkVsN0EeB1zE2Wc=",
+      "is_superuser": true,
+      "is_staff": true
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+      "username": "diana@mail.com",
+      "password": "pbkdf2_sha256$720000$iX9lCWtv6bTp9Id20iBssY$hZlyOjSVwT3GAzp+RRH3FhldBZnKB2K9FSQGzlc0BT4=",
+      "is_superuser": true,
+      "is_staff": true
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+      "username": "user@example.com",
+      "password": "pbkdf2_sha256$720000$7McbB84FhLRuVKugVRs1NQ$oX/gNDccdtt0nT3Z+m5z18b3UUlASAlFwk/TaHZNMNk=",
+      "is_superuser": false,
+      "is_staff": false
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 6,
+    "fields": {
+      "username": "vasya@mail.com",
+      "password": "pbkdf2_sha256$720000$ZihJuhYGriY65kQWEsJExA$6FNFftrle+5XHlYVkGx8sGpRsaH9DQZ1/xYIGjjW4WY=",
+      "is_superuser": false,
+      "is_staff": false
+    }
+  }
+]

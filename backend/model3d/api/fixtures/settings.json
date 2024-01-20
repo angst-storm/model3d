@@ -1,0 +1,69 @@
+[
+  {
+    "model": "api.sitesettings",
+    "pk": 1,
+    "fields": {
+      "contactsText": "+7 (495) 215-24-47\r\ninfo@ceramic3d.ru\r\nг.Екатеринбург, проезд\r\nРешетникова 22А, оф.410",
+      "receiveDistributionUrl": "https://youtu.be/dQw4w9WgXcQ",
+      "privacyPolicyUrl": "https://ru.ceramic3d.com/include/licenses_detail.php",
+      "userAgreementUrl": "https://ru.ceramic3d.com/upload/docs/%D0%9B%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80.pdf",
+      "contactInformationUrl": "https://ru.ceramic3d.com/company/contacts/",
+      "wideBanner": "wide-banner.jpg",
+      "narrowBanner": "narrow-banner.png"
+    }
+  },
+  {
+    "model": "api.footerurl",
+    "pk": 1,
+    "fields": {
+      "settings": 1,
+      "name": "Ceramic3D",
+      "url": "https://ru.ceramic3d.com/products/ceramic3d/"
+    }
+  },
+  {
+    "model": "api.footerurl",
+    "pk": 2,
+    "fields": {
+      "settings": 1,
+      "name": "Запрос в техподдержку",
+      "url": "https://ru.ceramic3d.com/support/request/"
+    }
+  },
+  {
+    "model": "api.footerurl",
+    "pk": 3,
+    "fields": {
+      "settings": 1,
+      "name": "О компании",
+      "url": "https://ru.ceramic3d.com/company/"
+    }
+  },
+  {
+    "model": "api.socialmedia",
+    "pk": 1,
+    "fields": {
+      "settings": 1,
+      "image": "vk.png",
+      "url": "https://vk.com/club94380298"
+    }
+  },
+  {
+    "model": "api.socialmedia",
+    "pk": 2,
+    "fields": {
+      "settings": 1,
+      "image": "yt.png",
+      "url": "https://t.me/ceramic3d_info"
+    }
+  },
+  {
+    "model": "api.socialmedia",
+    "pk": 3,
+    "fields": {
+      "settings": 1,
+      "image": "tg.png",
+      "url": "https://www.youtube.com/channel/UCateAB_Qz75JwbeGToOFtHg"
+    }
+  }
+]

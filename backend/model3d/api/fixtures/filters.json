@@ -1,0 +1,238 @@
+[
+  {
+    "model": "api.color",
+    "pk": 1,
+    "fields": {
+      "name": "Красный",
+      "rgb": "#FF0000"
+    }
+  },
+  {
+    "model": "api.color",
+    "pk": 2,
+    "fields": {
+      "name": "Белый",
+      "rgb": "#FFFFFF"
+    }
+  },
+  {
+    "model": "api.color",
+    "pk": 3,
+    "fields": {
+      "name": "Черный",
+      "rgb": "#000000"
+    }
+  },
+  {
+    "model": "api.color",
+    "pk": 4,
+    "fields": {
+      "name": "Зеленый",
+      "rgb": "#00FF00"
+    }
+  },
+  {
+    "model": "api.color",
+    "pk": 5,
+    "fields": {
+      "name": "Синий",
+      "rgb": "#0000FF"
+    }
+  },
+  {
+    "model": "api.productform",
+    "pk": 1,
+    "fields": {
+      "name": "Круг"
+    }
+  },
+  {
+    "model": "api.productform",
+    "pk": 2,
+    "fields": {
+      "name": "Квадрат"
+    }
+  },
+  {
+    "model": "api.productform",
+    "pk": 3,
+    "fields": {
+      "name": "Звезда"
+    }
+  },
+  {
+    "model": "api.productform",
+    "pk": 4,
+    "fields": {
+      "name": "Произвольная"
+    }
+  },
+  {
+    "model": "api.productform",
+    "pk": 5,
+    "fields": {
+      "name": "Треугольник"
+    }
+  },
+  {
+    "model": "api.style",
+    "pk": 1,
+    "fields": {
+      "name": "Классика"
+    }
+  },
+  {
+    "model": "api.style",
+    "pk": 2,
+    "fields": {
+      "name": "Сканди"
+    }
+  },
+  {
+    "model": "api.style",
+    "pk": 3,
+    "fields": {
+      "name": "Минимализм"
+    }
+  },
+  {
+    "model": "api.style",
+    "pk": 4,
+    "fields": {
+      "name": "Модерн"
+    }
+  },
+  {
+    "model": "api.style",
+    "pk": 5,
+    "fields": {
+      "name": "Хай-тек"
+    }
+  },
+  {
+    "model": "api.format",
+    "pk": 1,
+    "fields": {
+      "name": ".obj"
+    }
+  },
+  {
+    "model": "api.format",
+    "pk": 2,
+    "fields": {
+      "name": ".3ds"
+    }
+  },
+  {
+    "model": "api.format",
+    "pk": 3,
+    "fields": {
+      "name": ".c3d"
+    }
+  },
+  {
+    "model": "api.format",
+    "pk": 4,
+    "fields": {
+      "name": ".blend"
+    }
+  },
+  {
+    "model": "api.format",
+    "pk": 5,
+    "fields": {
+      "name": ".fbx"
+    }
+  },
+  {
+    "model": "api.material",
+    "pk": 1,
+    "fields": {
+      "name": "Дерево"
+    }
+  },
+  {
+    "model": "api.material",
+    "pk": 2,
+    "fields": {
+      "name": "Металл"
+    }
+  },
+  {
+    "model": "api.material",
+    "pk": 3,
+    "fields": {
+      "name": "Стекло"
+    }
+  },
+  {
+    "model": "api.material",
+    "pk": 4,
+    "fields": {
+      "name": "Ткань"
+    }
+  },
+  {
+    "model": "api.material",
+    "pk": 5,
+    "fields": {
+      "name": "Бумага"
+    }
+  },
+  {
+    "model": "api.render",
+    "pk": 1,
+    "fields": {
+      "name": "Vray"
+    }
+  },
+  {
+    "model": "api.render",
+    "pk": 2,
+    "fields": {
+      "name": "MentalRay"
+    }
+  },
+  {
+    "model": "api.render",
+    "pk": 3,
+    "fields": {
+      "name": "Corona"
+    }
+  },
+  {
+    "model": "api.tag",
+    "pk": 1,
+    "fields": {
+      "name": "декор"
+    }
+  },
+  {
+    "model": "api.tag",
+    "pk": 2,
+    "fields": {
+      "name": "техника"
+    }
+  },
+  {
+    "model": "api.tag",
+    "pk": 3,
+    "fields": {
+      "name": "кухня"
+    }
+  },
+  {
+    "model": "api.tag",
+    "pk": 4,
+    "fields": {
+      "name": "спальня"
+    }
+  },
+  {
+    "model": "api.tag",
+    "pk": 5,
+    "fields": {
+      "name": "хранение"
+    }
+  }
+]
