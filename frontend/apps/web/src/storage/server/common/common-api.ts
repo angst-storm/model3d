@@ -1,5 +1,6 @@
 import {baseApi} from "../base-api";
 import {IInfoDocsResponseModel} from "./models/response/info-docs.response-model";
+import {ISiteSettingsResponseModel} from "./models/response/site-settings.response-model";
 
 
 export const commonApi = baseApi.injectEndpoints({
@@ -10,10 +11,16 @@ export const commonApi = baseApi.injectEndpoints({
                 method: 'GET'
             })
         }),
+        siteSettings: builder.query<ISiteSettingsResponseModel, void>({
+            query: () => ({
+                url: 'siteSettings',
+                method: 'GET'
+            })
+        }),
     })
 })
 
 export const {
-    useInfoDocsQuery
+    useInfoDocsQuery,
+    useSiteSettingsQuery
 } = commonApi
-

@@ -1,10 +1,13 @@
 import {createBrowserRouter, Navigate, Route, RouterProvider, Routes} from "react-router-dom";
-import {Authorization} from "./authorization-zone/components/authorization/authorization";
-import {Registration} from "./authorization-zone/components/registration/registration";
-import {EmailConfirm} from "./authorization-zone/components/email-confirm/email-confirm";
-import {PasswordRecovery} from "./authorization-zone/components/password-recovery/password-recovery";
-import {NotFound} from "./authorization-zone/components/not-found/not-found";
-import {AuthorizationZoneLayout} from "./authorization-zone/components/authorization-zone-layout/authorization-zone-layout";
+import {Authorization} from "./authorization-zone/routing/authorization/authorization";
+import {Registration} from "./authorization-zone/routing/registration/registration";
+import {EmailConfirm} from "./authorization-zone/routing/email-confirm/email-confirm";
+import {PasswordRecovery} from "./authorization-zone/routing/password-recovery/password-recovery";
+import {NotFound} from "./authorization-zone/routing/not-found/not-found";
+import {AuthorizationZoneLayout} from "./authorization-zone/routing/authorization-zone-layout/authorization-zone-layout";
+import {MarketplaceLayout} from "./marketplace-zone/routing/marketplace-layout/marketplace-layout";
+import {Catalog} from "./marketplace-zone/routing/catalog/catalog";
+import {ProductDetails} from "./marketplace-zone/routing/product-details/product-details";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +43,19 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    Component: MarketplaceLayout,
+    children: [
+      {
+        path: 'catalog',
+        Component: Catalog
+      },
+      {
+        path: 'product/:id',
+        Component: ProductDetails
+      }
+    ]
+  }
 ]);
 
 

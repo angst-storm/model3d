@@ -3,7 +3,6 @@ import {useController} from "react-hook-form";
 import {ChangeEvent, useEffect, useState} from "react";
 import './m3d-input.scss';
 import {M3dButton} from "../m3d-button/m3d-button";
-import {useHookFormMask} from "use-mask-input";
 
 export interface IM3DInputControlProps extends IFormControlCreateOptions<string> {
   supportingText?: string,

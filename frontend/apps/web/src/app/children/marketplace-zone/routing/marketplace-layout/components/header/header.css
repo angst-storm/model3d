@@ -1,0 +1,54 @@
+.header-layout {
+    height: var(--xl-sp);
+    background-color: var(--white);
+}
+
+.header-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.ceramic-logo {
+    margin-right: var(--lxs-sp);
+    cursor: pointer;
+}
+
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-button {
+    padding: 12px;
+    cursor: pointer;
+}
+
+.avatar-button {
+    padding: 8px;
+    margin: -8px;
+    height: 32px;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.favorites-button {
+    height: 24px;
+}
+
+.shopping-cart-button {
+    height: 24px;
+}
+
+.rounded-button {
+    border-radius: 50%;
+}

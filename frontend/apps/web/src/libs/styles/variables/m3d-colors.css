@@ -4,11 +4,15 @@
     /*M3/white*/
     --white: #ffffff;
     /*M3/state-layers/light/on-surface/opacity-0.12*/
-    --grey-light: #1D1B201F;
+    --layer-on-surface: #1D1B201F;
+    /*M3/state-layers/light/primary/opacity-0.12*/
+    --layer-primary: #6750A4;
     /*M3/sys/light/outline*/
     --outline: #72787E;
     /*M3/sys/light/surface-container*/
     --surface-container: #ECEEEF;
+    /*M3/sys/light/on-primary-container*/
+    --on-primary-continer: #001E31;
 
     /*M3/sys/light/on-surface*/
     --text-primary: #191C1D;

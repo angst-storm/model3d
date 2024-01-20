@@ -1,5 +1,5 @@
 :root {
-    --M3-label-l: {
+    .M3-label-l {
         font-family: Roboto;
         font-size: 14px;
         font-style: normal;
@@ -8,7 +8,16 @@
         letter-spacing: 0.1px;
     };
 
-    --M3-h-m: {
+    .M3-label-s {
+        font-family: Roboto;
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 16px; /* 145.455% */
+        letter-spacing: 0.5px;
+    };
+
+    .M3-h-m {
         font-family: Roboto;
         font-size: 28px;
         font-style: normal;
@@ -16,7 +25,7 @@
         line-height: 36px;
     };
 
-    --M3-r-l: {
+    .M3-body-l {
         font-family: Roboto;
         font-size: 16px;
         font-style: normal;
@@ -25,7 +34,16 @@
         letter-spacing: 0.5px;
     };
 
-    --M3-r-s: {
+    .M3-body-m {
+        font-family: Roboto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px; /* 142.857% */
+        letter-spacing: 0.25px;
+    };
+
+    .M3-body-s {
         font-family: Roboto;
         font-size: 12px;
         font-style: normal;
@@ -34,6 +52,3 @@
     };
 }
 
-.sdssd {
-    @apply --M3-r-s;
-}
