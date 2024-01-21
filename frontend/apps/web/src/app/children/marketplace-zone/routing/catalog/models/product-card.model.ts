@@ -1,6 +1,7 @@
 export interface IProductCardModel {
-    id: string
+    id: number
     name: string
-    image?: string,
+    isFree?: boolean
+    image?: string
     favoriteNumber?: number
 }

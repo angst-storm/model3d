@@ -48,15 +48,15 @@
 }
 
 .trailing-icon {
-    padding: var(--s-sp);
-    margin: var(--xs-sp);
+    cursor: pointer;
+    padding: var(--xs-sp) var(--ms-sp);
+    margin: 0 var(--xs-sp);
     width: 24px;
     height: 24px;
-    cursor: pointer;
-    border-radius: 50%;
 }
 
 .leading-icon {
+    cursor: pointer;
     padding: var(--xs-sp) var(--ms-sp);
     margin: 0 var(--xs-sp);
     width: 24px;

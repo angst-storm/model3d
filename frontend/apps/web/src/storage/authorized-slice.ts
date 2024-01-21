@@ -1,16 +1,20 @@
 import {createSlice} from "@reduxjs/toolkit";
 
+const AUTH_KEY: 'AUTH_KEY' = 'AUTH_KEY';
+
 const authorizedSlice = createSlice({
     name: 'is-authorized',
-    initialState: {
-        value: false
-    },
+    initialState: () => (localStorage.getItem(AUTH_KEY) === 'true'),
     reducers: {
         authorize: (state) => {
-            state.value = true;
+            localStorage.setItem(AUTH_KEY, 'true')
+
+            return state
         },
         unauthorize: (state) => {
-            state.value = false;
+            localStorage.removeItem(AUTH_KEY)
+
+            return state
         }
     }
 });

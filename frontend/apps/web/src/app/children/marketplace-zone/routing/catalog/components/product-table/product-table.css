@@ -5,4 +5,5 @@
     grid-auto-flow: row;
     gap: var(--m-sp) var(--lss-sp);
     justify-items: stretch;
+    width: max-content;
 }

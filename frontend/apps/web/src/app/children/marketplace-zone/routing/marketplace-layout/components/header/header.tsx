@@ -3,6 +3,7 @@ import {M3dButton} from "@model3d/controls";
 import {useEffect, useRef} from "react";
 import ripple from "ripple-effects";
 import {useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 export function Header() {
     const button = useRef<HTMLDivElement>(null);
@@ -46,22 +47,43 @@ export function Header() {
         // navigate('/to-profile')
     }
 
+    function toRegister() {
+        navigate('/registration')
+    }
+
+    function toLogIn() {
+        navigate('/authorization')
+    }
+
+    const authorized = useSelector((state: any) => state.authorized)
+
+
     return <div className={'header-layout grid-container'}>
         <div className={'header-box grid-element'}>
             <div className={'logo-block'}>
                 <img className={'ceramic-logo'} onClick={toMain} src={require('@assets/icons/svg/ceramic-logo-big.svg').default} alt={'ceramic logo'}></img>
                 <M3dButton leadingIcon={'catalog'} onClick={toCatalog}>Каталог</M3dButton>
             </div>
-            <nav className={'nav-bar'}>
-                <div ref={button} className={'rounded-button favorites-button nav-button no-select'} onClick={toFavorite}>
-                    <img src={require('@assets/icons/svg/heart.svg').default} alt={'ceramic logo'}></img>
-                </div>
-                <div ref={button2} className={'rounded-button shopping-cart-button nav-button no-select'} onClick={toCart} >
-                    <img src={require('@assets/icons/svg/shopping-cart.svg').default} alt={'shopping cart logo'}></img>
-                </div>
-                <div ref={button3} className={'rounded-button personal-cabinet avatar-button no-select'} onClick={toProfile} >
-                    <img src={require('@assets/icons/svg/avatar.svg').default} alt={'avatar logo'}></img>
-                </div>
+            <nav className={'nav-bar'} data-authorized={authorized}>
+                {
+                    authorized && <>
+                        <div ref={button} className={'rounded-button favorites-button nav-button no-select'} onClick={toFavorite}>
+                            <img src={require('@assets/icons/svg/heart.svg').default} alt={'ceramic logo'}></img>
+                        </div>
+                        <div ref={button2} className={'rounded-button shopping-cart-button nav-button no-select'} onClick={toCart} >
+                            <img src={require('@assets/icons/svg/shopping-cart.svg').default} alt={'shopping cart logo'}></img>
+                        </div>
+                        <div ref={button3} className={'rounded-button personal-cabinet avatar-button no-select'} onClick={toProfile} >
+                            <img src={require('@assets/icons/svg/avatar.svg').default} alt={'avatar logo'}></img>
+                        </div>
+                    </>
+                }
+                {
+                    !authorized && <>
+                        <M3dButton type={'outlined'} onClick={toLogIn}>Войти</M3dButton>
+                        <M3dButton type={'text'} onClick={toRegister}>Зарегистрироваться</M3dButton>
+                    </>
+                }
             </nav>
         </div>
     </div>

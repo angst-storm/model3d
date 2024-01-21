@@ -1,3 +1,3 @@
 export * from './server/index';
 export * from './store';
-export * from './authorizedSlice';
+export * from './authorized-slice';

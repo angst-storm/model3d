@@ -8,8 +8,8 @@ import {
 export interface IM3dSearchBarProps {
     placeholder?: string
     className?: string,
-    leadingIcon?: string,
-    trailingIcon?: string,
+    searchIcon?: string,
+    onSearch?: (searchValue: string) => void
 }
 
 export function M3dSearchBar(props: IM3dSearchBarProps) {
@@ -17,6 +17,7 @@ export function M3dSearchBar(props: IM3dSearchBarProps) {
         formState,
         handleSubmit,
         getValues,
+        setValue,
         control
     } = useForm<{ search: string }>()
 
@@ -24,8 +25,9 @@ export function M3dSearchBar(props: IM3dSearchBarProps) {
         name: 'email',
         control: control,
         label: props.placeholder || 'Найти...',
-        leadingIcon: props.leadingIcon,
-        trailingIcon: props.trailingIcon,
+        leadingIcon: props.searchIcon,
+        onSearch: props.onSearch,
+        onClear: () => { setValue('search', '') }
     }
 
     return <div className={`search-bar ${props.className ?? ''}`}>

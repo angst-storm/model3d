@@ -63,8 +63,8 @@ export function Registration() {
       <M3dInput {...password}></M3dInput>
       <M3DCheckbox {...receiveMail}></M3DCheckbox>
       <p className={'registration-form__agreement-text'}>Нажимая кнопку зарегистрироваться вы
-        принимаете <a href={'' + data?.termsDoc} download='terms.pdf'>Условия пользования для покупателей</a> и соглашаетесь
-        с <a href={'' + data?.policyDoc} download='policy.pdf'>Политикой конфиденциальности</a></p>
+        принимаете <a href={'' + data?.userAgreementUrl} download='terms.pdf'>Условия пользования для покупателей</a> и соглашаетесь
+        с <a href={'' + data?.privacyPolicyUrl} download='policy.pdf'>Политикой конфиденциальности</a></p>
       <M3dButton disabled={!formState.isValid} nativeType={'submit'}>Зарегистрироваться</M3dButton>
       <div className={'registration-form__additional-button'}>
         <M3dButton onClick={toAuth} type={'text'}>Войти</M3dButton>
