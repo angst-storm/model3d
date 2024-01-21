@@ -6,7 +6,7 @@ import {useController} from "react-hook-form";
 
 export interface IM3DCheckboxProps extends IFormControlCreateOptions<boolean> {
     label: string,
-    format: 'small' | 'large'
+    format: 'small' | 'large',
 }
 
 export function M3DCheckbox(props: IM3DCheckboxProps) {

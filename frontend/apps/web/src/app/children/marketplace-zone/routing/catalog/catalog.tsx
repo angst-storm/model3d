@@ -5,6 +5,9 @@ import {useEffect} from "react";
 import {useLazyProductsQuery} from "@storage";
 import {IProductTableProps, ProductTable} from "./components/product-table/product-table";
 import {PaginationBlock} from "./components/pagination-block/pagination-block";
+import {IFiltersValueModel} from "./models/filters-value.model";
+import {number} from "yup";
+import {IProductListParamsModel} from "../../../../../storage/server/product/models/params/product-list.params-model";
 
 export function Catalog() {
     const searchBarSettings: IM3dSearchBarProps = {
@@ -18,20 +21,36 @@ export function Catalog() {
     const lastRequestState = {
         activeSearchValue: '',
         activeFilters: {
-            formats: Array<undefined>,
-            render: Array<undefined>,
-            style: Array<undefined>,
-            colors: Array<undefined>,
-            materials: Array<undefined>,
-            form: Array<undefined>,
-            tags: Array<undefined>,
+            format: [] as string[],
+            render: [] as string[],
+            style: [] as string[],
+            colors: [] as string[],
+            material: [] as string[],
+            form: [] as string[],
+            tags: [] as string[],
         },
         itemsBefore: 0,
         itemsOnPage: 30
     };
 
-    function filterProducts(filters: any) {
-        lastRequestState.activeFilters = filters;
+    function prepareFilters(filters: IFiltersValueModel): any {
+        function prepareFilterArray(array: {value: boolean, id: string}[]) {
+            return array.filter((filter) => filter.value).map((filter) => filter.id.toString())
+        }
+
+        return {
+            render: prepareFilterArray(filters.render),
+            style: prepareFilterArray(filters.style),
+            // colors: prepareFilterArray(filters.color),
+            material: prepareFilterArray(filters.material),
+            form: prepareFilterArray(filters.form),
+            format: prepareFilterArray(filters.format),
+            // tags: prepareFilterArray(filters.tags),
+        }
+    }
+
+    function filterProducts(filters: IFiltersValueModel) {
+        lastRequestState.activeFilters = prepareFilters(filters);
         lastRequestState.itemsBefore = 0;
 
         reFetchProducts()
@@ -65,12 +84,41 @@ export function Catalog() {
         productsPromise,
     ] = useLazyProductsQuery();
 
-    function reFetchProducts() {
-        productsTrigger({
+    function getParamsModel(): IProductListParamsModel {
+        const requestParams = {
             offset: lastRequestState.itemsBefore,
             limit: lastRequestState.itemsOnPage,
-            search: lastRequestState.activeSearchValue ?? undefined,
-        })
+        } as IProductListParamsModel
+
+        if (lastRequestState.activeSearchValue) {
+            requestParams.search = lastRequestState.activeSearchValue
+        }
+
+        if (lastRequestState.activeFilters.format.length) {
+            requestParams.formats = lastRequestState.activeFilters.format
+        }
+
+        if (lastRequestState.activeFilters.form.length) {
+            requestParams.form = lastRequestState.activeFilters.form
+        }
+
+        if (lastRequestState.activeFilters.style.length) {
+            requestParams.style = lastRequestState.activeFilters.style
+        }
+
+        if (lastRequestState.activeFilters.material.length) {
+            requestParams.materials = lastRequestState.activeFilters.material
+        }
+
+        if (lastRequestState.activeFilters.render.length) {
+            requestParams.render = lastRequestState.activeFilters.render
+        }
+
+        return requestParams;
+    }
+
+    function reFetchProducts() {
+        productsTrigger(getParamsModel())
     }
 
     useEffect(() => {
@@ -83,7 +131,7 @@ export function Catalog() {
             <M3dButton className={'model-load-button'} type={'outlined'}>
                 Загрузить модель
             </M3dButton>
-            <FilterBlock className={'filter-block'}></FilterBlock>
+            <FilterBlock className={'filter-block'} onFiltersApply={filterProducts}></FilterBlock>
             <div className={'product-table-block'}>
                 <ProductTable products={productsResult.currentData?.results ?? []}></ProductTable>
                 <PaginationBlock className={'pagination-row'} pageCount={2} onPageChange={getNewPage}></PaginationBlock>

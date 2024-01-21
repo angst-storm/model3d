@@ -8,6 +8,8 @@ export function productModelMapper(data: IProductResponseModel): IProductCardMod
         id: data.id,
         name: data.name,
         image: data.preview,
-        isFree: data.isFree ?? false
+        isFree: data.isFree ?? false,
+        purchaseCount: data.purchaseCount ?? 0,
+        cost: data.cost
     }
 }

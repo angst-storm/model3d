@@ -11,6 +11,6 @@ export function infoDocsMapper(data?: IInfoDocsResponseModel): IInfoDocsModel | 
         privacyPolicyUrl: data.privacyPolicyUrl,
         userAgreementUrl: data.userAgreementUrl,
         contactInformationUrl: data.contactInformationUrl,
-        receiveDistributionsUrl: data.receiveDistributionsUrl
+        receiveDistributionsUrl: data.receiveDistributionUrl
     }
 }

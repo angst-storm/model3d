@@ -39,16 +39,15 @@
     border-radius: 100px;
     padding: var(--xss-sp) var(--s-sp);
     margin-right: auto;
+    color: var(--text-secondary);
+    background-color: var(--surface-variant);
+}
 
-    &[data-free = true] {
-        color: var(--text-secondary);
-        background-color: var(--surface-variant);
-    }
-
-    &[data-free = false] {
-        color: var(--white);
-        background-color: var(--on-primary-continer);
-    }
+.cost {
+    border-radius: 100px;
+    padding: var(--xss-sp) 0;
+    margin-right: auto;
+    color: var(--text-secondary);
 }
 
 .favorite-image {

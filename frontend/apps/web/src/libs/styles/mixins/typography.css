@@ -1,4 +1,13 @@
 :root {
+    .M3-title-m {
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 24px; /* 150% */
+        letter-spacing: 0.15px;
+    };
+
     .M3-label-l {
         font-family: Roboto;
         font-size: 14px;
@@ -17,7 +26,7 @@
         letter-spacing: 0.5px;
     };
 
-    .M3-h-m {
+    .M3-headline-m {
         font-family: Roboto;
         font-size: 28px;
         font-style: normal;

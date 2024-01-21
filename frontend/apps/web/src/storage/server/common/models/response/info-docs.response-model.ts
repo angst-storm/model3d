@@ -3,5 +3,5 @@ export interface IInfoDocsResponseModel {
     privacyPolicyUrl?: string
     userAgreementUrl?: string
     contactInformationUrl?: string
-    receiveDistributionsUrl?: string
+    receiveDistributionUrl?: string
 }
