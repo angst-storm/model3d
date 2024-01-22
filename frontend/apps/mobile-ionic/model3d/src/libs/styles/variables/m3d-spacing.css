@@ -1,0 +1,14 @@
+:root {
+    --xss-sp: 2px;
+    --xs-sp: 4px;
+    --s-sp: 8px;
+    --ms-sp: 12px;
+    --m-sp: 16px;
+    --ls-sp: 20px;
+    --lss-sp: 24px;
+    --lxs-sp: 32px;
+    --l-sp: 40px;
+    --xls-sp: 48px;
+    --xl-sp: 72px;
+    --xxl-sp: 96px;
+}

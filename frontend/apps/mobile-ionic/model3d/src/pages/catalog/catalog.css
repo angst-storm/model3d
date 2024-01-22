@@ -1,0 +1,17 @@
+.catalog {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--lxs-sp) var(--lss-sp);
+    margin-top: var(--l-sp);
+    margin-bottom: var(--xls-sp);
+}
+
+.main-search-bar {
+    grid-column: 1 / 3;
+    grid-row: 1;
+}
+
+.product-table-block {
+    grid-column: 1 / 3;
+    grid-row: 2;
+}
