@@ -16,7 +16,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <Navigate to="authorization" relative='route' replace />,
+    element: <Navigate to="catalog" relative='route' replace />,
   },
   {
     path: "not-found",
