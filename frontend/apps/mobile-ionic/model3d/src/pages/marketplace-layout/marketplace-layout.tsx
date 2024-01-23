@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import {IonContent, IonHeader, IonPage, IonRouterOutlet, IonTitle, IonToolbar} from '@ionic/react';
 
 import './marketplace-layout.css';
 import {Catalog} from "../catalog/catalog";
@@ -12,11 +12,6 @@ const MarketplaceLayout: React.FC = () => {
           <Header></Header>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Tab 2</IonTitle>
-          </IonToolbar>
-        </IonHeader>
         <Catalog></Catalog>
       </IonContent>
     </IonPage>

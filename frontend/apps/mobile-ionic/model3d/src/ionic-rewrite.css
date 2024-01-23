@@ -1,0 +1,4 @@
+:root {
+    --ion-background-color: var(--surface-container);
+    --ion-tab-bar-background: var(--white);
+}

@@ -3,7 +3,6 @@ import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
   IonIcon,
-  IonLabel,
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
@@ -14,6 +13,8 @@ import { IonReactRouter } from '@ionic/react-router';
 import { ellipse, square, triangle } from 'ionicons/icons';
 import MainPage from './pages/Tab1';
 import Cart from './pages/Tab3';
+import styles from './app.module.css'
+import './ionic-rewrite.css'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -36,6 +37,8 @@ import './theme/variables.css';
 import {history} from "./history";
 import 'src/libs/styles'
 import MarketplaceLayout from "./pages/marketplace-layout/marketplace-layout";
+import {ProductDetails} from "./pages/product-details/product-details";
+import {Catalog} from "./pages/catalog/catalog";
 
 
 setupIonicReact();
@@ -45,31 +48,25 @@ const App: React.FC = () => (
     <IonReactRouter history={history}>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path="/main">
-            <MainPage />
-          </Route>
-          <Route exact path="/catalog">
-            <MarketplaceLayout />
-          </Route>
-          <Route path="/cart">
-            <Cart />
-          </Route>
-          <Route path="/account">
-            <Cart />
-          </Route>
+          <Route exact path="/main" component={MainPage}/>
+          <Route exact path="/catalog" component={MarketplaceLayout}/>
+          <Route path="/product/:id" component={ProductDetails}/>
+          <Route path="/cart" component={Cart}/>
+          <Route path="/account" component={Cart}/>
           <Route exact path="/">
             <Redirect to="/catalog" />
           </Route>
         </IonRouterOutlet>
+
         <IonTabBar slot="bottom">
           <IonTabButton tab="main" href="/main">
             <IonIcon aria-hidden="true" icon={triangle} />
           </IonTabButton>
-          <IonTabButton tab="catalog" href="/catalog">
+          <IonTabButton tab="/catalog" href="/catalog">
             <IonIcon aria-hidden="true" icon={ellipse} />
           </IonTabButton>
-          <IonTabButton tab="catalog" href="/catalog">
-            <button>asfasdfas</button>
+          <IonTabButton tab="catalog" href="/layout/catalog">
+            <button className={styles['add-button']}></button>
           </IonTabButton>
           <IonTabButton tab="cart" href="/cart">
             <IonIcon aria-hidden="true" icon={square} />
