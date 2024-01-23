@@ -4,5 +4,6 @@ export interface IUserResponseModel {
     email: string,
     checkMark: boolean,
     image: string,
-    productsCount: number
+    productsCount: number,
+    rating: number
 }

@@ -32,5 +32,6 @@ export function productModelMapper(data: IProductResponseModel): IProductCardMod
         archive: data.archive,
         category: data.category,
         modelFileSizeBytes: data.modelFileSizeBytes,
+        files: data.files
     }
 }

@@ -1,9 +1,10 @@
 import {useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {useLazyProductByIdQuery, useLazyUserByIdQuery} from "@storage";
 import styles from './product-details.module.css'
 import {IProductCardModel} from "../catalog/models/product-card.model";
 import {M3dButton} from "@model3d/controls";
+import * as OV from 'online-3d-viewer'
 
 export function ProductDetails() {
     const routeParams = useParams();
@@ -19,6 +20,11 @@ export function ProductDetails() {
     ] = useLazyUserByIdQuery()
 
     const [characteristicsList, setCharacteristicsList] = useState([] as string[])
+    const [model, setModel] = useState<string | undefined>()
+    // const [modelLoading, setModelLoading] = useState(true)
+
+    let viewer: OV.EmbeddedViewer;
+    const viewerRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
         if (routeParams.id) {
@@ -32,6 +38,36 @@ export function ProductDetails() {
             authorRequestTrigger(productRequestState.currentData?.author)
         }
     }, [productRequestState])
+
+    useEffect(() => {
+        updateCharacteristics(productRequestState.currentData)
+
+        setModel(
+            productRequestState.currentData?.files
+                ?.filter((value) => value.format.name !== '.c3d')
+                ?.map((value) => value.file)[0]
+        )
+    }, [productRequestState])
+
+    useEffect(() => {
+        if (productRequestState.currentData?.author) {
+            if (!viewer) {
+                viewer = new OV.EmbeddedViewer (viewerRef.current as HTMLDivElement, {
+                    camera : new OV.Camera (
+                        new OV.Coord3D (-1.5, 2.0, 3.0),
+                        new OV.Coord3D (0.0, 0.0, 0.0),
+                        new OV.Coord3D (0.0, 1.0, 0.0),
+                        45.0
+                    ),
+                    backgroundColor : new OV.RGBAColor (230, 230, 230, 255),
+                    defaultColor : new OV.RGBColor (200, 200, 200),
+                    edgeSettings : new OV.EdgeSettings (false, new OV.RGBColor (0, 0, 0), 1)
+                });
+            }
+
+            initModel()
+        }
+    }, [model])
 
     function updateCharacteristics(data: IProductCardModel | undefined) {
         if (data) {
@@ -89,6 +125,14 @@ export function ProductDetails() {
         }
     }
 
+    function initModel() {
+        if (viewer && model) {
+            viewer.LoadModelFromUrlList([model]);
+        }
+
+        // setModelLoading(false)
+    }
+
     return <div className={`${styles['product-details']} grid-container`}>
         {
             productRequestState.currentData && !productRequestState.isLoading && <>
@@ -106,7 +150,12 @@ export function ProductDetails() {
                                 })
                             }
                         </div>
-                        <img className={`${styles['active-image']}`} src={productRequestState.currentData.image}/>
+                        {
+                            !model && <img className={`${styles['active-image']}`} src={productRequestState.currentData.image}/>
+                        }
+                        {
+                            model && <div className={`${styles['viewer']}`} ref={viewerRef}></div>
+                        }
                     </div>
                     <div className={`${styles['characteristics']}`}>
                         <h1 className={`${styles['characteristics-title']} M3-headline-m`}>Характеристики</h1>
@@ -128,8 +177,14 @@ export function ProductDetails() {
                                     {authorRequestState.currentData.login}
                                 </div>
                                 <div className={`${styles['author-details']}`}>
-                                    <img className={`${styles['author-star-icon']}`} src={require('@assets/icons/svg/yellow-star.svg').default}/>
-                                    <span className={`${styles['author-star-value']} M3-body-s`}>{4.9}</span>
+                                    {
+                                        authorRequestState.currentData.rating && <>
+                                            <img className={`${styles['author-star-icon']}`}
+                                                 src={require('@assets/icons/svg/yellow-star.svg').default}/>
+                                            <span
+                                                className={`${styles['author-star-value']} M3-body-s`}>{authorRequestState.currentData.rating}</span>
+                                        </>
+                                    }
                                     {
                                         authorRequestState.currentData.productsCount && <span
                                             className={`${styles['author-responses']} M3-body-s`}>{authorRequestState.currentData.productsCount} моделей</span>
@@ -139,7 +194,6 @@ export function ProductDetails() {
                         </div>
                     }
                     {
-
                         productRequestState.currentData && <div className={`${styles['buy-block']}`}>
                             <div className={`${styles['price-line']}`}>
                                 <span className={`${styles['price']} M3-headline-s`}>
