@@ -60,19 +60,21 @@ const App: React.FC = () => (
 
         <IonTabBar slot="bottom">
           <IonTabButton tab="main" href="/main">
-            <IonIcon aria-hidden="true" icon={triangle} />
+            <IonIcon aria-hidden="true" icon={require('@assets/icons/svg/home.svg').default}/>
           </IonTabButton>
           <IonTabButton tab="/catalog" href="/catalog">
-            <IonIcon aria-hidden="true" icon={ellipse} />
+            <IonIcon aria-hidden="true" icon={require('@assets/icons/svg/book.svg').default} />
           </IonTabButton>
           <IonTabButton tab="catalog" href="/layout/catalog">
-            <button className={styles['add-button']}></button>
+            <button className={styles['add-button']}>
+              <img src={require('@assets/icons/svg/white-plus.svg').default}/>
+            </button>
           </IonTabButton>
           <IonTabButton tab="cart" href="/cart">
-            <IonIcon aria-hidden="true" icon={square} />
+            <IonIcon aria-hidden="true" icon={require('@assets/icons/svg/shopping-cart.svg').default} />
           </IonTabButton>
           <IonTabButton tab="account" href="/account">
-            <IonIcon aria-hidden="true" icon={square} />
+            <IonIcon aria-hidden="true" icon={require('@assets/icons/svg/avatar.svg').default} />
           </IonTabButton>
         </IonTabBar>
       </IonTabs>

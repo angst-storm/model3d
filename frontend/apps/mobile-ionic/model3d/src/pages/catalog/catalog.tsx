@@ -11,7 +11,7 @@ import React from "react";
 
 export function Catalog() {
     const searchBarSettings: IM3dSearchBarProps = {
-        placeholder: 'Поиск по моделям и материалам',
+        placeholder: 'Поиск по моделям',
         searchIcon: 'search',
         onSearch: (searchValue: string) => {
             searchProducts(searchValue)

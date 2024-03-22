@@ -1,5 +1,6 @@
 .card-layout {
     max-width: 100%;
+    min-width: 100px;
     max-height: min-content;
 
     background-color: var(--white);
@@ -8,9 +9,10 @@
 }
 
 .product-image {
-    object-fit: scale-down;
+    object-fit: fill;
     cursor: pointer;
     max-width: 100%;
+    width: 100%;
 }
 
 .product-name {

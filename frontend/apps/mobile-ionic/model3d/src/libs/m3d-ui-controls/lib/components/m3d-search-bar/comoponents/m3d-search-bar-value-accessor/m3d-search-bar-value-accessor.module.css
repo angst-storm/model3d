@@ -3,7 +3,7 @@
     flex-direction: row;
     border-radius: 100px;
     width: 100%;
-    min-width: 360px;
+    min-width: 224px;
     max-height: min-content;
     padding: var(--xs-sp);
     border: none;
@@ -41,6 +41,9 @@
     align-items: center;
     z-index: -1;
     padding-left: var(--xs-sp);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .supporting-text {
